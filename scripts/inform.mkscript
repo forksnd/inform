@@ -425,7 +425,7 @@ diagrams:
 
 # -----------------------------------------------------------------------------
 # "Diagnostics" are files produced by inform7 to measure its own performance when
-# running in a special mode, as it does when intest runs the test GenerateDiagnostics.
+# running in a special mode, as it does when intest runs the test GenerateDiagnostics-G.
 # We need first to run that test; then the diagnostics files will all be in the
 # $(INFORM7WEB)/Figures directory; but in some cases that is not where we want them, so
 # we need to move those on to their proper homes.
@@ -436,7 +436,7 @@ diagrams:
 
 .PHONY: diagnostics
 diagnostics:
-	$(INTESTX) inform7 GenerateDiagnostics
+	$(INTESTX) inform7 GenerateDiagnostics-G
 	{copy-download file: $(INFORM7WEB)/Figures/excerpts-diagnostics.txt into: INFORM7WEB}
 	rm -f $(INFORM7WEB)/Figures/syntax-diagnostics.txt
 	{copy-download file: $(INFORM7WEB)/Figures/preform-diagnostics.txt  into: INFORM7WEB}
