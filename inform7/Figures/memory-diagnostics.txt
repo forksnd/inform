@@ -1,6 +1,6 @@
 Total memory consumption was 190361K = 186 MB
 
- ---- was used for 2468392 objects, in 429188 frames in 0 x 800K = 0K = 0 MB:
+ ---- was used for 2468395 objects, in 429191 frames in 0 x 800K = 0K = 0 MB:
 
     22.9%  inter_tree_node_array                    62 x 8192 = 507904 objects, 44697536 bytes
     19.3%  text_stream_array                        6685 x 100 = 668500 objects, 37649920 bytes
@@ -29,10 +29,10 @@ Total memory consumption was 190361K = 186 MB
      0.5%  excerpt_meaning                          3680 objects, 1148160 bytes
      0.5%  adjective_meaning                        219 objects, 1084488 bytes
      0.5%  inter_schema_node                        9464 objects, 1059968 bytes
-     0.4%  production                               4070 objects, 944240 bytes
+     0.4%  production                               4071 objects, 944472 bytes
      0.4%  individual_form                          2810 objects, 944160 bytes
      0.4%  grammatical_usage                        3869 objects, 928560 bytes
-     0.4%  ptoken                                   8890 objects, 924560 bytes
+     0.4%  ptoken                                   8891 objects, 924664 bytes
      0.3%  unary_predicate_array                    18 x 1000 = 18000 objects, 720576 bytes
      0.2%  holon_splice_array                       71 x 100 = 7100 objects, 399872 bytes
      0.2%  dictionary                               8297 objects, 398256 bytes
@@ -55,7 +55,7 @@ Total memory consumption was 190361K = 186 MB
      ----  nascent_array                            2597 objects, 166208 bytes
      ----  filename                                 4152 objects, 166080 bytes
      ----  rule_family_data                         414 objects, 152352 bytes
-     ----  nonterminal                              784 objects, 144256 bytes
+     ----  nonterminal                              785 objects, 144440 bytes
      ----  unicode_lookup_value_array               34 x 1000 = 34000 objects, 136816 bytes
      ----  inference                                1783 objects, 128376 bytes
      ----  pcalc_term_array                         3 x 1000 = 3000 objects, 120096 bytes
@@ -320,5 +320,5 @@ Total memory consumption was 190361K = 186 MB
      ----  code generation workspace for objects    2368 bytes in 19 claims
      0.2%  emitter array storage                    439840 bytes in 2567 claims
 
--119.-5% was overhead - -233019520 bytes = -227558K = -222 MB
+-119.-5% was overhead - -233020040 bytes = -227558K = -222 MB
 

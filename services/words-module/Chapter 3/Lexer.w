@@ -527,7 +527,7 @@ int lxs_most_significant_space_char; /* Most significant whitespace character pr
 int lxs_number_of_tab_stops; /* Number of consecutive tabs */
 int lxs_this_line_is_empty_so_far; /* Current line white space so far? */
 int lxs_this_word_is_empty_so_far; /* Looking for a word to start? */
-int lxs_scanning_text_substitution_depth; /* Used to break up strings at [substitutions] */
+int lxs_scanning_text_depth; /* Used to break up strings at [substitutions] */
 
 /* significant in literal mode: */
 int lxs_comment_nesting; /* For square brackets within square brackets */
@@ -560,7 +560,7 @@ void Lexer::reset_lexer(void) {
 	lxs_literal_mode = FALSE; /* begin in ordinary mode... */
 	lxs_kind_of_word = ORDINARY_KW; /* ...expecting an ordinary word */
 	lxs_string_soak_up_spaces_mode = FALSE;
-	lxs_scanning_text_substitution_depth = 0;
+	lxs_scanning_text_depth = 0;
 	lxs_comment_nesting = 0;
 }
 
@@ -724,6 +724,78 @@ void Lexer::feed_triplet(inchar32_t last_cr, inchar32_t cr, inchar32_t next_cr) 
 		lexer_position.line_number++;
 }
 
+@h The text substitution scanning depth.
+The lexical syntax of Inform was changed in 2026 to allow text literals to
+appear in text substitutions, and consequently to allow text substitutions
+to be nested.
+
+For example, consider lexing: ``"Then, [praise for `golf`]."``. The word
+"golf" is a backticked text literal inside a text substitution inside a
+regular text literal.
+
+When scanning, the state variable `lxs_scanning_text_depth`
+records how deep we are in such convolutions. It is 0 when string literal
+lexing begins, then 1 in a text substitution, 2 in a text inside that
+substitution, 3 in a substitution inside that text, and so on.
+Deep inside ``"[intone `[intone `[intone `[intone `[intone `[intone `[intone `X`]`]`]`]`]`]`]"``
+it reaches as high as 14.
+
+The parity of this value is usually more important than its value. If the
+depth is even, characters are literal, and if it is odd, they are part of a
+substitution.
+
+When breaking up ``"Then, [praise for `golf`]."`` we do not dismantle it
+into some tree structure: we just peel off the outermost later of substitution.
+This one produces:
+
+	"Then, "
+	,
+	praise
+	for
+	"golf"
+	,
+	"."
+
+But the nested substitution ``"Then, [praise for `[praise for `golf`]`]."``
+becomes, rather similarly:
+
+	"Then, "
+	,
+	praise
+	for
+	"[praise for `golf`]"
+	,
+	"."
+
+leaving the literal ``"[praise for `golf`]"`` still containing text substitutions,
+which will recursively be expanded in a subsequent pass.
+
+So, then, we _track_ the depth as far down as it goes, but we only transform
+the text at the lower depth values. In particular, it is only at depth 1 that
+`lxs_literal_mode` is deactivated, so that we are actually extracting the text
+into words.
+
+@d TRACE_FEEDER FALSE
+
+=
+void Lexer::go_deeper(char *why) {
+	lxs_scanning_text_depth++;
+	if (TRACE_FEEDER) PRINT("+1 to %d because %s ", lxs_scanning_text_depth, why);
+	@<Maintain depth invariants@>;
+}
+
+void Lexer::go_shallower(char *why) {
+	if (lxs_scanning_text_depth > 0) {
+		lxs_scanning_text_depth--;
+		if (TRACE_FEEDER) PRINT("-1 to %d because %s ", lxs_scanning_text_depth, why);
+	}
+	@<Maintain depth invariants@>;
+}
+
+@<Maintain depth invariants@> =
+	if (lxs_scanning_text_depth <= 1) { lxs_literal_mode = FALSE; }
+	else { lxs_literal_mode = TRUE; lxs_kind_of_word = STRING_KW; }
+
 @h Lexing one character at a time.
 We can think of characters as a stream of differently-coloured marbles,
 flowing from various sources into a hopper above our marble-sorting
@@ -753,6 +825,8 @@ extending to `lexer_hwm-1`.
 
 =
 void Lexer::feed_char_into_lexer(inchar32_t c) {
+	if (TRACE_FEEDER) PRINT("%d%c %c ",
+		lxs_scanning_text_depth, (lxs_literal_mode)?'L':'_', c);
 	Lexer::ensure_lexer_hwm_can_be_raised_by(MAX_WORD_LENGTH, TRUE);
 	if (lxs_literal_mode) {
 	    @<Contemplate leaving literal mode@>;
@@ -767,30 +841,22 @@ void Lexer::feed_char_into_lexer(inchar32_t c) {
 	    @<Admire the texture of the whitespace@>;
 	    if (lexer_word != lexer_hwm) @<Complete the current word@>;
 		if (c == '\n') @<Line break outside a literal@>;
-		return;
-	}
-
-	if ((lxs_this_word_is_empty_so_far) && (lxs_scanning_text_substitution_depth % 2 == 1)) {
-		if (c == INNER_STRING_BEGIN) {
-			c = STRING_BEGIN;
-			lxs_scanning_text_substitution_depth++;
+	} else {
+		@<Note the use of internal text literal delimiters@>;
+		/* otherwise record the current character as part of the word being built */
+		*(lexer_hwm++) = c;
+	
+		@<Force string division at the end of a text substitution, if necessary@>;
+	
+		if (lxs_this_word_is_empty_so_far) {
+			@<Look at recent whitespace to see what break it followed@>;
+			@<Contemplate entering literal mode@>;
 		}
+	
+		lxs_this_word_is_empty_so_far = FALSE;
+		lxs_this_line_is_empty_so_far = FALSE;
 	}
-
-    /* otherwise record the current character as part of the word being built */
-	*(lexer_hwm++) = c;
-
-    if (lxs_scanning_text_substitution_depth % 2 == 1) {
-        @<Force string division at the end of a text substitution, if necessary@>;
-    }
-
-	if (lxs_this_word_is_empty_so_far) {
-    	@<Look at recent whitespace to see what break it followed@>;
-	    @<Contemplate entering literal mode@>;
-    }
-
-	lxs_this_word_is_empty_so_far = FALSE;
-	lxs_this_line_is_empty_so_far = FALSE;
+	if (TRACE_FEEDER) PRINT("\n");
 }
 
 @h Dealing with whitespace.
@@ -842,6 +908,30 @@ discarded. A paragraph break is converted into a special "divider" word.
 		Lexer::feed_char_into_lexer(' ');
 	}
 	lxs_this_line_is_empty_so_far = TRUE;
+
+@ The backtick internal text delimiters are relevant only inside a text
+substitution, i.e., when the depth is positive. If the depth is odd, we are
+in substitution wording and ready to open internal text, and if it is even we
+are in a literal already and ready to close it.
+
+The outermost pair of internal text delimiters, only, are converted to
+regular text delimiters: these are the ones which open from depth 1 (raising
+it to 2) or close from depth 2 (lowering it to 1).
+
+@<Note the use of internal text literal delimiters@> =
+	if (lxs_scanning_text_depth > 0) {
+		if (lxs_scanning_text_depth % 2 == 1) {
+			if (c == INNER_STRING_BEGIN) {
+				if (lxs_scanning_text_depth == 1) c = STRING_BEGIN;
+				Lexer::go_deeper("inner-open found at odd depth");
+			}
+		} else {
+			if (c == INNER_STRING_END) {
+				if (lxs_scanning_text_depth == 2) c = STRING_END; 
+				Lexer::go_shallower("inner-end found at even depth");
+			}
+		}
+	}
 
 @ When working through a literal string, a new-line together with any
 preceding whitespace is converted into a single space character, and we
@@ -1030,18 +1120,10 @@ finished.
 	    	}
             break;
         case STRING_KW:
-            if ((c == STRING_END) ||
-            	((c == INNER_STRING_END) && (lxs_scanning_text_substitution_depth > 0) &&
-            		(lxs_scanning_text_substitution_depth % 2 == 0))) {
+            if (c == STRING_END) {
                 lxs_string_soak_up_spaces_mode = FALSE;
-                if (c == STRING_END) {
-                	lxs_scanning_text_substitution_depth = 0;
-                } else {
-                	c = STRING_END;
-                	lxs_scanning_text_substitution_depth--;
-                }
+                Lexer::go_shallower("STRING_END reached");
                 *(lexer_hwm++) = c; /* record the `STRING_END` character as part of the word */
-                lxs_literal_mode = FALSE;
             }
             break;
         case I6_INCLUSION_KW:
@@ -1073,19 +1155,23 @@ eight ordinary words (four of them commas).
 Note that each open square bracket, and each close square bracket, has been
 removed and become a comma word. We see to open squares before we come
 to recording the character, so to get rid of the `[` character, we change
-`c` to a space:
+`c` to a space.
+
+(This string division only happens when the outermost text substitution begins,
+which is when the depth is 0, and about to rise to 1.)
 
 @<Force string division at the start of a text substitution, if necessary@> =
     if (lexer_divide_strings_at_text_substitutions) {
-    	if ((c == TEXT_SUBSTITUTION_BEGIN) && (lxs_scanning_text_substitution_depth % 2 == 0)) {
-    		int d = lxs_scanning_text_substitution_depth;
-    		if (d == 0) {
-		        Lexer::feed_char_into_lexer(STRING_END); /* feed `"` to close the old string */
+    	if ((c == TEXT_SUBSTITUTION_BEGIN) && (lxs_scanning_text_depth % 2 == 0)) {
+    		if (lxs_scanning_text_depth == 0) {
+    			Lexer::feed_char_into_lexer(STRING_END); /* feed `"` to close the old string */
 		        Lexer::feed_char_into_lexer(' ');
 		        Lexer::feed_char_into_lexer(TEXT_SUBSTITUTION_SEPARATOR); /* feed `,` to start new word */
 		        c = ' '; /* the lexer now goes on to record a space, which will end the `,` word */
-		    }
-	        lxs_scanning_text_substitution_depth = d+1; /* but remember that we must get back again */
+		        Lexer::go_deeper("begin substitution at 0");
+		    } else {
+		    	Lexer::go_deeper("begin substitution at even depth > 0");
+	        }
 	    }
     }
 
@@ -1104,19 +1190,23 @@ that third character in its sequence space, `]`, space, and that means
 it will now feed a spurious space into the start of our resumed text?
 Happily, the answer is no: this is why the feeder above checks that it
 is still in ordinary mode before sending that third character. Having
-open quotes again, we have put the lexer into literal mode: and so the
+opened quotes again, we have put the lexer into literal mode: and so the
 spurious space is never fed, and there is no problem.
+
+(This string division only happens when the outermost text substitution ends,
+which is when the depth is 1, and about to fall to 0.)
 
 @<Force string division at the end of a text substitution, if necessary@> =
     if (lexer_divide_strings_at_text_substitutions) {
-    	if ((c == TEXT_SUBSTITUTION_END) && (lxs_scanning_text_substitution_depth % 2 == 1)) {
-	        int d = lxs_scanning_text_substitution_depth;
-	        if (d == 1) {
+    	if ((c == TEXT_SUBSTITUTION_END) && (lxs_scanning_text_depth % 2 == 1)) {
+	        if (lxs_scanning_text_depth == 1) {
+				Lexer::go_shallower("end substitution at 1");
 				*(lexer_hwm-1) = TEXT_SUBSTITUTION_SEPARATOR; /* overwrite recorded copy of `]` with `,` */
 				Lexer::feed_char_into_lexer(' '); /* then feed a space to end the `,` word */
 				Lexer::feed_char_into_lexer(STRING_BEGIN); /* then feed `"` to open a new string */
+			} else {
+				Lexer::go_shallower("end substitution at odd depth > 1");
 			}
-			lxs_scanning_text_substitution_depth = d - 1;
 		}
 	}
 

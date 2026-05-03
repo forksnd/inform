@@ -59,7 +59,7 @@ function togglePopup(material_id) {
     <ul class="crumbs"><li><a href="../index.html">Home</a></li><li><a href="../services.html">Services</a></li><li><a href="index.html">words</a></li><li><a href="index.html#3">Chapter 3: Words in Sequence</a></li><li><b>Lexer</b></li></ul></div>
 <p class="purpose">To break down a stream of characters into a numbered sequence of words, literal strings and literal I6 inclusions, removing comments and unnecessary whitespace.</p>
 
-<ul class="toc"><li><a href="3-lxr.html#SP6">&#167;6. The lexical structure of source text</a></li><li><a href="3-lxr.html#SP10">&#167;10. What the lexer stores for each word</a></li><li><a href="3-lxr.html#SP16">&#167;16. External lexer states</a></li><li><a href="3-lxr.html#SP17">&#167;17. Definition of punctuation</a></li><li><a href="3-lxr.html#SP18">&#167;18. Definition of indentation</a></li><li><a href="3-lxr.html#SP19">&#167;19. Access functions</a></li><li><a href="3-lxr.html#SP20">&#167;20. Definition of white space</a></li><li><a href="3-lxr.html#SP21">&#167;21. Internal lexer states</a></li><li><a href="3-lxr.html#SP25">&#167;25. Feeding the lexer</a></li><li><a href="3-lxr.html#SP28">&#167;28. Lexing one character at a time</a></li><li><a href="3-lxr.html#SP28_1">&#167;28.1. Dealing with whitespace</a></li><li><a href="3-lxr.html#SP28_5">&#167;28.5. Completing a word</a></li><li><a href="3-lxr.html#SP28_6">&#167;28.6. Entering and leaving literal mode</a></li><li><a href="3-lxr.html#SP28_8">&#167;28.8. Breaking strings up at text substitutions</a></li><li><a href="3-lxr.html#SP30">&#167;30. Splicing</a></li><li><a href="3-lxr.html#SP31">&#167;31. Basic command-line error handler</a></li><li><a href="3-lxr.html#SP32">&#167;32. Logging absolutely everything</a></li></ul><hr class="tocbar">
+<ul class="toc"><li><a href="3-lxr.html#SP6">&#167;6. The lexical structure of source text</a></li><li><a href="3-lxr.html#SP10">&#167;10. What the lexer stores for each word</a></li><li><a href="3-lxr.html#SP16">&#167;16. External lexer states</a></li><li><a href="3-lxr.html#SP17">&#167;17. Definition of punctuation</a></li><li><a href="3-lxr.html#SP18">&#167;18. Definition of indentation</a></li><li><a href="3-lxr.html#SP19">&#167;19. Access functions</a></li><li><a href="3-lxr.html#SP20">&#167;20. Definition of white space</a></li><li><a href="3-lxr.html#SP21">&#167;21. Internal lexer states</a></li><li><a href="3-lxr.html#SP25">&#167;25. Feeding the lexer</a></li><li><a href="3-lxr.html#SP28">&#167;28. The text substitution scanning depth</a></li><li><a href="3-lxr.html#SP29">&#167;29. Lexing one character at a time</a></li><li><a href="3-lxr.html#SP29_1">&#167;29.1. Dealing with whitespace</a></li><li><a href="3-lxr.html#SP29_6">&#167;29.6. Completing a word</a></li><li><a href="3-lxr.html#SP29_7">&#167;29.7. Entering and leaving literal mode</a></li><li><a href="3-lxr.html#SP29_9">&#167;29.9. Breaking strings up at text substitutions</a></li><li><a href="3-lxr.html#SP31">&#167;31. Splicing</a></li><li><a href="3-lxr.html#SP32">&#167;32. Basic command-line error handler</a></li><li><a href="3-lxr.html#SP33">&#167;33. Logging absolutely everything</a></li></ul><hr class="tocbar">
 
 <div class="lsmarkdown">
 <p class="commentary firstcommentary"><a id="SP1" class="paragraph-anchor"></a><b>&#167;1. </b>  Lexical analysis is the process of reading characters from the source
@@ -317,7 +317,7 @@ upper limits.</p>
 <pre class="displayed-code all-displayed-code code-font">
 <span class="type-syntax">int</span><span class="plain-syntax"> </span><span class="identifier-syntax">current_lw_array_size</span><span class="plain-syntax"> = </span><span class="constant-syntax">0</span><span class="plain-syntax">, </span><span class="identifier-syntax">next_lw_array_size</span><span class="plain-syntax"> = </span><span class="constant-syntax">75000</span><span class="plain-syntax">;</span>
 
-<span class="type-syntax">void</span><span class="plain-syntax"> </span><span class="function-syntax">Lexer::ensure_space_up_to</span><button class="popup" onclick="togglePopup('usagePopup3')"><span class="comment-syntax">?</span><span class="popuptext" id="usagePopup3">Usage of <span class="code-font"><span class="function-syntax">Lexer::ensure_space_up_to</span></span>:<br/><a href="3-lxr.html#SP12">&#167;12</a>, <a href="3-lxr.html#SP28_5_2">&#167;28.5.2</a>, <a href="3-lxr.html#SP30">&#167;30</a></span></button><span class="plain-syntax">(</span><span class="type-syntax">int</span><span class="plain-syntax"> </span><span class="identifier-syntax">n</span><span class="plain-syntax">) {</span>
+<span class="type-syntax">void</span><span class="plain-syntax"> </span><span class="function-syntax">Lexer::ensure_space_up_to</span><button class="popup" onclick="togglePopup('usagePopup3')"><span class="comment-syntax">?</span><span class="popuptext" id="usagePopup3">Usage of <span class="code-font"><span class="function-syntax">Lexer::ensure_space_up_to</span></span>:<br/><a href="3-lxr.html#SP12">&#167;12</a>, <a href="3-lxr.html#SP29_6_2">&#167;29.6.2</a>, <a href="3-lxr.html#SP31">&#167;31</a></span></button><span class="plain-syntax">(</span><span class="type-syntax">int</span><span class="plain-syntax"> </span><span class="identifier-syntax">n</span><span class="plain-syntax">) {</span>
 <span class="plain-syntax">    </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">n</span><span class="plain-syntax"> &lt; </span><span class="identifier-syntax">current_lw_array_size</span><span class="plain-syntax">) </span><span class="reserved-syntax">return</span><span class="plain-syntax">;</span>
 <span class="plain-syntax">    </span><span class="type-syntax">int</span><span class="plain-syntax"> </span><span class="identifier-syntax">new_size</span><span class="plain-syntax"> = </span><span class="identifier-syntax">current_lw_array_size</span><span class="plain-syntax">;</span>
 <span class="plain-syntax">    </span><span class="reserved-syntax">while</span><span class="plain-syntax"> (</span><span class="identifier-syntax">n</span><span class="plain-syntax"> &gt;= </span><span class="identifier-syntax">new_size</span><span class="plain-syntax">) {</span>
@@ -329,7 +329,7 @@ upper limits.</p>
 <span class="plain-syntax">        ((</span><span class="type-syntax">lexer_details</span><span class="plain-syntax"> *) (</span><span class="identifier-syntax">Memory::calloc</span><span class="plain-syntax">(</span><span class="identifier-syntax">new_size</span><span class="plain-syntax">, </span><span class="reserved-syntax">sizeof</span><span class="plain-syntax">(</span><span class="type-syntax">lexer_details</span><span class="plain-syntax">), </span><span class="constant-syntax">LEXER_WORDS_MREASON</span><span class="plain-syntax">)));</span>
 
 <span class="plain-syntax">    </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">new_lw_array</span><span class="plain-syntax"> == </span><span class="identifier-syntax">NULL</span><span class="plain-syntax">) {</span>
-<span class="plain-syntax">        </span><a href="3-lxr.html#SP31" class="function-link"><span class="function-syntax">Lexer::lexer_problem_handler</span></a><span class="plain-syntax">(</span><span class="constant-syntax">MEMORY_OUT_LEXERERROR</span><span class="plain-syntax">, </span><span class="identifier-syntax">NULL</span><span class="plain-syntax">, </span><span class="identifier-syntax">NULL</span><span class="plain-syntax">);</span>
+<span class="plain-syntax">        </span><a href="3-lxr.html#SP32" class="function-link"><span class="function-syntax">Lexer::lexer_problem_handler</span></a><span class="plain-syntax">(</span><span class="constant-syntax">MEMORY_OUT_LEXERERROR</span><span class="plain-syntax">, </span><span class="identifier-syntax">NULL</span><span class="plain-syntax">, </span><span class="identifier-syntax">NULL</span><span class="plain-syntax">);</span>
 <span class="plain-syntax">        </span><span class="identifier-syntax">exit</span><span class="plain-syntax">(1); </span><span class="comment-syntax">/* in case the handler fails to do this */</span>
 <span class="plain-syntax">    }</span>
 <span class="plain-syntax">    </span><span class="reserved-syntax">for</span><span class="plain-syntax"> (</span><span class="type-syntax">int</span><span class="plain-syntax"> </span><span class="identifier-syntax">i</span><span class="plain-syntax">=0; </span><span class="identifier-syntax">i</span><span class="plain-syntax">&lt;</span><span class="identifier-syntax">new_size</span><span class="plain-syntax">; </span><span class="identifier-syntax">i</span><span class="plain-syntax">++) {</span>
@@ -357,7 +357,7 @@ termination character, plus breathing space for a single character's worth
 of lookahead:</p>
 </div>
 <pre class="displayed-code all-displayed-code code-font">
-<span class="type-syntax">void</span><span class="plain-syntax"> </span><span class="function-syntax">Lexer::ensure_lexer_hwm_can_be_raised_by</span><button class="popup" onclick="togglePopup('usagePopup4')"><span class="comment-syntax">?</span><span class="popuptext" id="usagePopup4">Usage of <span class="code-font"><span class="function-syntax">Lexer::ensure_lexer_hwm_can_be_raised_by</span></span>:<br/><a href="3-lxr.html#SP15">&#167;15</a>, <a href="3-lxr.html#SP28">&#167;28</a></span></button><span class="plain-syntax">(</span><span class="type-syntax">int</span><span class="plain-syntax"> </span><span class="identifier-syntax">n</span><span class="plain-syntax">, </span><span class="type-syntax">int</span><span class="plain-syntax"> </span><span class="identifier-syntax">transfer_partial_word</span><span class="plain-syntax">) {</span>
+<span class="type-syntax">void</span><span class="plain-syntax"> </span><span class="function-syntax">Lexer::ensure_lexer_hwm_can_be_raised_by</span><button class="popup" onclick="togglePopup('usagePopup4')"><span class="comment-syntax">?</span><span class="popuptext" id="usagePopup4">Usage of <span class="code-font"><span class="function-syntax">Lexer::ensure_lexer_hwm_can_be_raised_by</span></span>:<br/><a href="3-lxr.html#SP15">&#167;15</a>, <a href="3-lxr.html#SP29">&#167;29</a></span></button><span class="plain-syntax">(</span><span class="type-syntax">int</span><span class="plain-syntax"> </span><span class="identifier-syntax">n</span><span class="plain-syntax">, </span><span class="type-syntax">int</span><span class="plain-syntax"> </span><span class="identifier-syntax">transfer_partial_word</span><span class="plain-syntax">) {</span>
 <span class="plain-syntax">    </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">lexer_hwm</span><span class="plain-syntax"> + </span><span class="identifier-syntax">n</span><span class="plain-syntax"> + </span><span class="constant-syntax">2</span><span class="plain-syntax"> &gt;= </span><span class="identifier-syntax">lexer_workspace_end</span><span class="plain-syntax">) {</span>
 <span class="plain-syntax">        </span><span class="type-syntax">inchar32_t</span><span class="plain-syntax"> *</span><span class="identifier-syntax">old_hwm</span><span class="plain-syntax"> = </span><span class="identifier-syntax">lexer_hwm</span><span class="plain-syntax">;</span>
 <span class="plain-syntax">        </span><span class="type-syntax">int</span><span class="plain-syntax"> </span><span class="identifier-syntax">m</span><span class="plain-syntax"> = </span><span class="constant-syntax">1</span><span class="plain-syntax">;</span>
@@ -464,7 +464,7 @@ distinguished. We'll do this with the letters <code>A</code> to <code>Z</code>.<
 <span class="plain-syntax">    </span><span class="reserved-syntax">return</span><span class="plain-syntax"> </span><span class="constant-syntax">0</span><span class="plain-syntax">;</span>
 <span class="plain-syntax">}</span>
 
-<span class="type-syntax">int</span><span class="plain-syntax"> </span><span class="function-syntax">Lexer::break_char_for_indents</span><button class="popup" onclick="togglePopup('usagePopup9')"><span class="comment-syntax">?</span><span class="popuptext" id="usagePopup9">Usage of <span class="code-font"><span class="function-syntax">Lexer::break_char_for_indents</span></span>:<br/><a href="3-lxr.html#SP28_2">&#167;28.2</a></span></button><span class="plain-syntax">(</span><span class="type-syntax">int</span><span class="plain-syntax"> </span><span class="identifier-syntax">t</span><span class="plain-syntax">) {</span>
+<span class="type-syntax">int</span><span class="plain-syntax"> </span><span class="function-syntax">Lexer::break_char_for_indents</span><button class="popup" onclick="togglePopup('usagePopup9')"><span class="comment-syntax">?</span><span class="popuptext" id="usagePopup9">Usage of <span class="code-font"><span class="function-syntax">Lexer::break_char_for_indents</span></span>:<br/><a href="3-lxr.html#SP29_2">&#167;29.2</a></span></button><span class="plain-syntax">(</span><span class="type-syntax">int</span><span class="plain-syntax"> </span><span class="identifier-syntax">t</span><span class="plain-syntax">) {</span>
 <span class="plain-syntax">    </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">t</span><span class="plain-syntax"> &lt;= </span><span class="constant-syntax">0</span><span class="plain-syntax">) </span><span class="identifier-syntax">internal_error</span><span class="plain-syntax">(</span><span class="string-syntax">"bad indentation break"</span><span class="plain-syntax">);</span>
 <span class="plain-syntax">    </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">t</span><span class="plain-syntax"> &gt;= </span><span class="constant-syntax">26</span><span class="plain-syntax">) </span><span class="reserved-syntax">return</span><span class="plain-syntax"> </span><span class="character-syntax">'Z'</span><span class="plain-syntax">;</span>
 <span class="plain-syntax">    </span><span class="reserved-syntax">return</span><span class="plain-syntax"> </span><span class="character-syntax">'A'</span><span class="plain-syntax"> + </span><span class="identifier-syntax">t</span><span class="plain-syntax"> </span><span class="constant-syntax">-</span><span class="plain-syntax"> </span><span class="constant-syntax">1</span><span class="plain-syntax">;</span>
@@ -481,7 +481,7 @@ distinguished. We'll do this with the letters <code>A</code> to <code>Z</code>.<
 <span class="plain-syntax">    </span><span class="identifier-syntax">lw_array</span><span class="plain-syntax">[</span><span class="identifier-syntax">wn</span><span class="plain-syntax">].</span><span class="element-syntax">lw_identity</span><span class="plain-syntax"> = </span><span class="identifier-syntax">ve</span><span class="plain-syntax">;</span>
 <span class="plain-syntax">}</span>
 
-<span class="type-syntax">int</span><span class="plain-syntax"> </span><span class="function-syntax">Lexer::break_before</span><button class="popup" onclick="togglePopup('usagePopup12')"><span class="comment-syntax">?</span><span class="popuptext" id="usagePopup12">Usage of <span class="code-font"><span class="function-syntax">Lexer::break_before</span></span>:<br/><a href="3-lxr.html#SP32">&#167;32</a><br/>Wordings - <a href="3-wrd.html#SP20">&#167;20</a></span></button><span class="plain-syntax">(</span><span class="type-syntax">int</span><span class="plain-syntax"> </span><span class="identifier-syntax">wn</span><span class="plain-syntax">) {</span>
+<span class="type-syntax">int</span><span class="plain-syntax"> </span><span class="function-syntax">Lexer::break_before</span><button class="popup" onclick="togglePopup('usagePopup12')"><span class="comment-syntax">?</span><span class="popuptext" id="usagePopup12">Usage of <span class="code-font"><span class="function-syntax">Lexer::break_before</span></span>:<br/><a href="3-lxr.html#SP33">&#167;33</a><br/>Wordings - <a href="3-wrd.html#SP20">&#167;20</a></span></button><span class="plain-syntax">(</span><span class="type-syntax">int</span><span class="plain-syntax"> </span><span class="identifier-syntax">wn</span><span class="plain-syntax">) {</span>
 <span class="plain-syntax">    </span><span class="reserved-syntax">return</span><span class="plain-syntax"> </span><span class="identifier-syntax">lw_array</span><span class="plain-syntax">[</span><span class="identifier-syntax">wn</span><span class="plain-syntax">].</span><span class="element-syntax">lw_break</span><span class="plain-syntax">;</span>
 <span class="plain-syntax">}</span>
 
@@ -524,7 +524,7 @@ distinguished. We'll do this with the letters <code>A</code> to <code>Z</code>.<
 <span class="plain-syntax">    </span><span class="identifier-syntax">lw_array</span><span class="plain-syntax">[</span><span class="identifier-syntax">wn</span><span class="plain-syntax">].</span><span class="element-syntax">lw_text</span><span class="plain-syntax"> = </span><span class="identifier-syntax">rt</span><span class="plain-syntax">;</span>
 <span class="plain-syntax">}</span>
 
-<span class="type-syntax">void</span><span class="plain-syntax"> </span><span class="function-syntax">Lexer::word_copy</span><button class="popup" onclick="togglePopup('usagePopup18')"><span class="comment-syntax">?</span><span class="popuptext" id="usagePopup18">Usage of <span class="code-font"><span class="function-syntax">Lexer::word_copy</span></span>:<br/><a href="3-lxr.html#SP30">&#167;30</a></span></button><span class="plain-syntax">(</span><span class="type-syntax">int</span><span class="plain-syntax"> </span><span class="identifier-syntax">to</span><span class="plain-syntax">, </span><span class="type-syntax">int</span><span class="plain-syntax"> </span><span class="identifier-syntax">from</span><span class="plain-syntax">) {</span>
+<span class="type-syntax">void</span><span class="plain-syntax"> </span><span class="function-syntax">Lexer::word_copy</span><button class="popup" onclick="togglePopup('usagePopup18')"><span class="comment-syntax">?</span><span class="popuptext" id="usagePopup18">Usage of <span class="code-font"><span class="function-syntax">Lexer::word_copy</span></span>:<br/><a href="3-lxr.html#SP31">&#167;31</a></span></button><span class="plain-syntax">(</span><span class="type-syntax">int</span><span class="plain-syntax"> </span><span class="identifier-syntax">to</span><span class="plain-syntax">, </span><span class="type-syntax">int</span><span class="plain-syntax"> </span><span class="identifier-syntax">from</span><span class="plain-syntax">) {</span>
 <span class="plain-syntax">    </span><span class="identifier-syntax">lw_array</span><span class="plain-syntax">[</span><span class="identifier-syntax">to</span><span class="plain-syntax">] = </span><span class="identifier-syntax">lw_array</span><span class="plain-syntax">[</span><span class="identifier-syntax">from</span><span class="plain-syntax">];</span>
 <span class="plain-syntax">}</span>
 
@@ -598,7 +598,7 @@ of word.</p>
 <span class="type-syntax">int</span><span class="plain-syntax"> </span><span class="identifier-syntax">lxs_number_of_tab_stops</span><span class="plain-syntax">; </span><span class="comment-syntax">/* Number of consecutive tabs */</span>
 <span class="type-syntax">int</span><span class="plain-syntax"> </span><span class="identifier-syntax">lxs_this_line_is_empty_so_far</span><span class="plain-syntax">; </span><span class="comment-syntax">/* Current line white space so far? */</span>
 <span class="type-syntax">int</span><span class="plain-syntax"> </span><span class="identifier-syntax">lxs_this_word_is_empty_so_far</span><span class="plain-syntax">; </span><span class="comment-syntax">/* Looking for a word to start? */</span>
-<span class="type-syntax">int</span><span class="plain-syntax"> </span><span class="identifier-syntax">lxs_scanning_text_substitution_depth</span><span class="plain-syntax">; </span><span class="comment-syntax">/* Used to break up strings at [substitutions] */</span>
+<span class="type-syntax">int</span><span class="plain-syntax"> </span><span class="identifier-syntax">lxs_scanning_text_depth</span><span class="plain-syntax">; </span><span class="comment-syntax">/* Used to break up strings at [substitutions] */</span>
 
 <span class="comment-syntax">/* significant in literal mode: */</span>
 <span class="type-syntax">int</span><span class="plain-syntax"> </span><span class="identifier-syntax">lxs_comment_nesting</span><span class="plain-syntax">; </span><span class="comment-syntax">/* For square brackets within square brackets */</span>
@@ -632,7 +632,7 @@ always being &quot;off&quot;).</p>
 <span class="plain-syntax">    </span><span class="identifier-syntax">lxs_literal_mode</span><span class="plain-syntax"> = </span><span class="identifier-syntax">FALSE</span><span class="plain-syntax">; </span><span class="comment-syntax">/* begin in ordinary mode... */</span>
 <span class="plain-syntax">    </span><span class="identifier-syntax">lxs_kind_of_word</span><span class="plain-syntax"> = </span><span class="constant-syntax">ORDINARY_KW</span><span class="plain-syntax">; </span><span class="comment-syntax">/* ...expecting an ordinary word */</span>
 <span class="plain-syntax">    </span><span class="identifier-syntax">lxs_string_soak_up_spaces_mode</span><span class="plain-syntax"> = </span><span class="identifier-syntax">FALSE</span><span class="plain-syntax">;</span>
-<span class="plain-syntax">    </span><span class="identifier-syntax">lxs_scanning_text_substitution_depth</span><span class="plain-syntax"> = </span><span class="constant-syntax">0</span><span class="plain-syntax">;</span>
+<span class="plain-syntax">    </span><span class="identifier-syntax">lxs_scanning_text_depth</span><span class="plain-syntax"> = </span><span class="constant-syntax">0</span><span class="plain-syntax">;</span>
 <span class="plain-syntax">    </span><span class="identifier-syntax">lxs_comment_nesting</span><span class="plain-syntax"> = </span><span class="constant-syntax">0</span><span class="plain-syntax">;</span>
 <span class="plain-syntax">}</span>
 </pre>
@@ -693,14 +693,14 @@ least one paragraph, even if a blank one.</p>
 
 <pre class="displayed-code all-displayed-code code-font">
 <span class="plain-syntax">    </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">extra_padding</span><span class="plain-syntax"> == </span><span class="identifier-syntax">FALSE</span><span class="plain-syntax">) {</span>
-<span class="plain-syntax">        </span><a href="3-lxr.html#SP28" class="function-link"><span class="function-syntax">Lexer::feed_char_into_lexer</span></a><span class="plain-syntax">(</span><span class="character-syntax">' '</span><span class="plain-syntax">);</span>
+<span class="plain-syntax">        </span><a href="3-lxr.html#SP29" class="function-link"><span class="function-syntax">Lexer::feed_char_into_lexer</span></a><span class="plain-syntax">(</span><span class="character-syntax">' '</span><span class="plain-syntax">);</span>
 <span class="plain-syntax">    } </span><span class="reserved-syntax">else</span><span class="plain-syntax"> {</span>
-<span class="plain-syntax">        </span><a href="3-lxr.html#SP28" class="function-link"><span class="function-syntax">Lexer::feed_char_into_lexer</span></a><span class="plain-syntax">(</span><span class="character-syntax">' '</span><span class="plain-syntax">);</span>
-<span class="plain-syntax">        </span><a href="3-lxr.html#SP28" class="function-link"><span class="function-syntax">Lexer::feed_char_into_lexer</span></a><span class="plain-syntax">(</span><span class="character-syntax">'\n'</span><span class="plain-syntax">);</span>
-<span class="plain-syntax">        </span><a href="3-lxr.html#SP28" class="function-link"><span class="function-syntax">Lexer::feed_char_into_lexer</span></a><span class="plain-syntax">(</span><span class="character-syntax">'\n'</span><span class="plain-syntax">);</span>
-<span class="plain-syntax">        </span><a href="3-lxr.html#SP28" class="function-link"><span class="function-syntax">Lexer::feed_char_into_lexer</span></a><span class="plain-syntax">(</span><span class="character-syntax">'\n'</span><span class="plain-syntax">);</span>
-<span class="plain-syntax">        </span><a href="3-lxr.html#SP28" class="function-link"><span class="function-syntax">Lexer::feed_char_into_lexer</span></a><span class="plain-syntax">(</span><span class="character-syntax">'\n'</span><span class="plain-syntax">);</span>
-<span class="plain-syntax">        </span><a href="3-lxr.html#SP28" class="function-link"><span class="function-syntax">Lexer::feed_char_into_lexer</span></a><span class="plain-syntax">(</span><span class="character-syntax">' '</span><span class="plain-syntax">);</span>
+<span class="plain-syntax">        </span><a href="3-lxr.html#SP29" class="function-link"><span class="function-syntax">Lexer::feed_char_into_lexer</span></a><span class="plain-syntax">(</span><span class="character-syntax">' '</span><span class="plain-syntax">);</span>
+<span class="plain-syntax">        </span><a href="3-lxr.html#SP29" class="function-link"><span class="function-syntax">Lexer::feed_char_into_lexer</span></a><span class="plain-syntax">(</span><span class="character-syntax">'\n'</span><span class="plain-syntax">);</span>
+<span class="plain-syntax">        </span><a href="3-lxr.html#SP29" class="function-link"><span class="function-syntax">Lexer::feed_char_into_lexer</span></a><span class="plain-syntax">(</span><span class="character-syntax">'\n'</span><span class="plain-syntax">);</span>
+<span class="plain-syntax">        </span><a href="3-lxr.html#SP29" class="function-link"><span class="function-syntax">Lexer::feed_char_into_lexer</span></a><span class="plain-syntax">(</span><span class="character-syntax">'\n'</span><span class="plain-syntax">);</span>
+<span class="plain-syntax">        </span><a href="3-lxr.html#SP29" class="function-link"><span class="function-syntax">Lexer::feed_char_into_lexer</span></a><span class="plain-syntax">(</span><span class="character-syntax">'\n'</span><span class="plain-syntax">);</span>
+<span class="plain-syntax">        </span><a href="3-lxr.html#SP29" class="function-link"><span class="function-syntax">Lexer::feed_char_into_lexer</span></a><span class="plain-syntax">(</span><span class="character-syntax">' '</span><span class="plain-syntax">);</span>
 <span class="plain-syntax">    }</span>
 </pre>
 <ul class="endnotetexts"><li>This code is used in <a href="3-lxr.html#SP25">&#167;25</a>.</li></ul>
@@ -730,11 +730,11 @@ be a bug, and Inform is bug-free, so it follows that it could never happen.</p>
 <span class="plain-syntax">        }</span>
 <span class="plain-syntax">    }</span>
 <span class="plain-syntax">    </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">lxs_kind_of_word</span><span class="plain-syntax"> == </span><span class="constant-syntax">STRING_KW</span><span class="plain-syntax">)</span>
-<span class="plain-syntax">        </span><a href="3-lxr.html#SP31" class="function-link"><span class="function-syntax">Lexer::lexer_problem_handler</span></a><span class="plain-syntax">(</span><span class="constant-syntax">STRING_NEVER_ENDS_LEXERERROR</span><span class="plain-syntax">, </span><span class="identifier-syntax">problem_source_description</span><span class="plain-syntax">, </span><span class="identifier-syntax">NULL</span><span class="plain-syntax">);</span>
+<span class="plain-syntax">        </span><a href="3-lxr.html#SP32" class="function-link"><span class="function-syntax">Lexer::lexer_problem_handler</span></a><span class="plain-syntax">(</span><span class="constant-syntax">STRING_NEVER_ENDS_LEXERERROR</span><span class="plain-syntax">, </span><span class="identifier-syntax">problem_source_description</span><span class="plain-syntax">, </span><span class="identifier-syntax">NULL</span><span class="plain-syntax">);</span>
 <span class="plain-syntax">    </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">lxs_kind_of_word</span><span class="plain-syntax"> == </span><span class="constant-syntax">COMMENT_KW</span><span class="plain-syntax">)</span>
-<span class="plain-syntax">        </span><a href="3-lxr.html#SP31" class="function-link"><span class="function-syntax">Lexer::lexer_problem_handler</span></a><span class="plain-syntax">(</span><span class="constant-syntax">COMMENT_NEVER_ENDS_LEXERERROR</span><span class="plain-syntax">, </span><span class="identifier-syntax">problem_source_description</span><span class="plain-syntax">, </span><span class="identifier-syntax">NULL</span><span class="plain-syntax">);</span>
+<span class="plain-syntax">        </span><a href="3-lxr.html#SP32" class="function-link"><span class="function-syntax">Lexer::lexer_problem_handler</span></a><span class="plain-syntax">(</span><span class="constant-syntax">COMMENT_NEVER_ENDS_LEXERERROR</span><span class="plain-syntax">, </span><span class="identifier-syntax">problem_source_description</span><span class="plain-syntax">, </span><span class="identifier-syntax">NULL</span><span class="plain-syntax">);</span>
 <span class="plain-syntax">    </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">lxs_kind_of_word</span><span class="plain-syntax"> == </span><span class="constant-syntax">I6_INCLUSION_KW</span><span class="plain-syntax">)</span>
-<span class="plain-syntax">        </span><a href="3-lxr.html#SP31" class="function-link"><span class="function-syntax">Lexer::lexer_problem_handler</span></a><span class="plain-syntax">(</span><span class="constant-syntax">I6_NEVER_ENDS_LEXERERROR</span><span class="plain-syntax">, </span><span class="identifier-syntax">problem_source_description</span><span class="plain-syntax">, </span><span class="identifier-syntax">NULL</span><span class="plain-syntax">);</span>
+<span class="plain-syntax">        </span><a href="3-lxr.html#SP32" class="function-link"><span class="function-syntax">Lexer::lexer_problem_handler</span></a><span class="plain-syntax">(</span><span class="constant-syntax">I6_NEVER_ENDS_LEXERERROR</span><span class="plain-syntax">, </span><span class="identifier-syntax">problem_source_description</span><span class="plain-syntax">, </span><span class="identifier-syntax">NULL</span><span class="plain-syntax">);</span>
 <span class="plain-syntax">    </span><span class="identifier-syntax">lxs_kind_of_word</span><span class="plain-syntax"> = </span><span class="constant-syntax">ORDINARY_KW</span><span class="plain-syntax">;</span>
 </pre>
 <ul class="endnotetexts"><li>This code is used in <a href="3-lxr.html#SP25">&#167;25</a>.</li></ul>
@@ -795,17 +795,85 @@ most common URLs glue up as single words.)</p>
 <span class="plain-syntax">        }</span>
 <span class="plain-syntax">    }</span>
 <span class="plain-syntax">    </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">space</span><span class="plain-syntax">) {</span>
-<span class="plain-syntax">        </span><a href="3-lxr.html#SP28" class="function-link"><span class="function-syntax">Lexer::feed_char_into_lexer</span></a><span class="plain-syntax">(</span><span class="character-syntax">' '</span><span class="plain-syntax">);</span>
-<span class="plain-syntax">        </span><a href="3-lxr.html#SP28" class="function-link"><span class="function-syntax">Lexer::feed_char_into_lexer</span></a><span class="plain-syntax">(</span><span class="identifier-syntax">cr</span><span class="plain-syntax">); </span><span class="comment-syntax">/* which might take us into literal mode, so to be careful... */</span>
-<span class="plain-syntax">        </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">lxs_literal_mode</span><span class="plain-syntax"> == </span><span class="identifier-syntax">FALSE</span><span class="plain-syntax">) </span><a href="3-lxr.html#SP28" class="function-link"><span class="function-syntax">Lexer::feed_char_into_lexer</span></a><span class="plain-syntax">(</span><span class="character-syntax">' '</span><span class="plain-syntax">);</span>
-<span class="plain-syntax">    } </span><span class="reserved-syntax">else</span><span class="plain-syntax"> </span><a href="3-lxr.html#SP28" class="function-link"><span class="function-syntax">Lexer::feed_char_into_lexer</span></a><span class="plain-syntax">(</span><span class="identifier-syntax">cr</span><span class="plain-syntax">);</span>
+<span class="plain-syntax">        </span><a href="3-lxr.html#SP29" class="function-link"><span class="function-syntax">Lexer::feed_char_into_lexer</span></a><span class="plain-syntax">(</span><span class="character-syntax">' '</span><span class="plain-syntax">);</span>
+<span class="plain-syntax">        </span><a href="3-lxr.html#SP29" class="function-link"><span class="function-syntax">Lexer::feed_char_into_lexer</span></a><span class="plain-syntax">(</span><span class="identifier-syntax">cr</span><span class="plain-syntax">); </span><span class="comment-syntax">/* which might take us into literal mode, so to be careful... */</span>
+<span class="plain-syntax">        </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">lxs_literal_mode</span><span class="plain-syntax"> == </span><span class="identifier-syntax">FALSE</span><span class="plain-syntax">) </span><a href="3-lxr.html#SP29" class="function-link"><span class="function-syntax">Lexer::feed_char_into_lexer</span></a><span class="plain-syntax">(</span><span class="character-syntax">' '</span><span class="plain-syntax">);</span>
+<span class="plain-syntax">    } </span><span class="reserved-syntax">else</span><span class="plain-syntax"> </span><a href="3-lxr.html#SP29" class="function-link"><span class="function-syntax">Lexer::feed_char_into_lexer</span></a><span class="plain-syntax">(</span><span class="identifier-syntax">cr</span><span class="plain-syntax">);</span>
 
 <span class="plain-syntax">    </span><span class="reserved-syntax">if</span><span class="plain-syntax"> ((</span><span class="identifier-syntax">cr</span><span class="plain-syntax"> == </span><span class="character-syntax">'\n'</span><span class="plain-syntax">) &amp;&amp; (</span><span class="identifier-syntax">lexer_position</span><span class="plain-syntax">.</span><span class="element-syntax">file_of_origin</span><span class="plain-syntax">))</span>
 <span class="plain-syntax">        </span><span class="identifier-syntax">lexer_position</span><span class="plain-syntax">.</span><span class="element-syntax">line_number</span><span class="plain-syntax">++;</span>
 <span class="plain-syntax">}</span>
 </pre>
 <div class="lsmarkdown">
-<p class="commentary firstcommentary"><a id="SP28" class="paragraph-anchor"></a><b>&#167;28. Lexing one character at a time.</b>  We can think of characters as a stream of differently-coloured marbles,
+<p class="commentary firstcommentary"><a id="SP28" class="paragraph-anchor"></a><b>&#167;28. The text substitution scanning depth.</b>  The lexical syntax of Inform was changed in 2026 to allow text literals to
+appear in text substitutions, and consequently to allow text substitutions
+to be nested.</p>
+<p>For example, consider lexing: <code>&quot;Then, [praise for `golf`].&quot;</code>. The word
+&quot;golf&quot; is a backticked text literal inside a text substitution inside a
+regular text literal.</p>
+<p>When scanning, the state variable <code>lxs_scanning_text_depth</code>
+records how deep we are in such convolutions. It is 0 when string literal
+lexing begins, then 1 in a text substitution, 2 in a text inside that
+substitution, 3 in a substitution inside that text, and so on.
+Deep inside <code>&quot;[intone `[intone `[intone `[intone `[intone `[intone `[intone `X`]`]`]`]`]`]`]&quot;</code>
+it reaches as high as 14.</p>
+<p>The parity of this value is usually more important than its value. If the
+depth is even, characters are literal, and if it is odd, they are part of a
+substitution.</p>
+<p>When breaking up <code>&quot;Then, [praise for `golf`].&quot;</code> we do not dismantle it
+into some tree structure: we just peel off the outermost later of substitution.
+This one produces:</p>
+<pre class="displayed-code all-displayed-code code-font"><span class="string-syntax">"Then, "</span><span class="plain-syntax">
+,
+</span><span class="identifier-syntax">praise</span><span class="plain-syntax">
+</span><span class="reserved-syntax">for</span><span class="plain-syntax">
+</span><span class="string-syntax">"golf"</span><span class="plain-syntax">
+,
+</span><span class="string-syntax">"."</span><span class="plain-syntax">
+</span></pre>
+<p>But the nested substitution <code>&quot;Then, [praise for `[praise for `golf`]`].&quot;</code>
+becomes, rather similarly:</p>
+<pre class="displayed-code all-displayed-code code-font"><span class="string-syntax">"Then, "</span><span class="plain-syntax">
+,
+</span><span class="identifier-syntax">praise</span><span class="plain-syntax">
+</span><span class="reserved-syntax">for</span><span class="plain-syntax">
+</span><span class="string-syntax">"[praise for `golf`]"</span><span class="plain-syntax">
+,
+</span><span class="string-syntax">"."</span><span class="plain-syntax">
+</span></pre>
+<p>leaving the literal <code>&quot;[praise for `golf`]&quot;</code> still containing text substitutions,
+which will recursively be expanded in a subsequent pass.</p>
+<p>So, then, we <em>track</em> the depth as far down as it goes, but we only transform
+the text at the lower depth values. In particular, it is only at depth 1 that
+<code>lxs_literal_mode</code> is deactivated, so that we are actually extracting the text
+into words.</p>
+</div>
+<pre class="definitions code-font"><span class="definition-keyword">define</span> <span class="identifier-syntax">TRACE_FEEDER</span> <span class="identifier-syntax">FALSE</span>
+</pre>
+<pre class="displayed-code all-displayed-code code-font">
+<span class="type-syntax">void</span><span class="plain-syntax"> </span><span class="function-syntax">Lexer::go_deeper</span><button class="popup" onclick="togglePopup('usagePopup25')"><span class="comment-syntax">?</span><span class="popuptext" id="usagePopup25">Usage of <span class="code-font"><span class="function-syntax">Lexer::go_deeper</span></span>:<br/><a href="3-lxr.html#SP29_4">&#167;29.4</a>, <a href="3-lxr.html#SP29_9">&#167;29.9</a></span></button><span class="plain-syntax">(</span><span class="type-syntax">char</span><span class="plain-syntax"> *</span><span class="identifier-syntax">why</span><span class="plain-syntax">) {</span>
+<span class="plain-syntax">    </span><span class="identifier-syntax">lxs_scanning_text_depth</span><span class="plain-syntax">++;</span>
+<span class="plain-syntax">    </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="constant-syntax">TRACE_FEEDER</span><span class="plain-syntax">) </span><span class="identifier-syntax">PRINT</span><span class="plain-syntax">(</span><span class="string-syntax">"+1 to %d because %s "</span><span class="plain-syntax">, </span><span class="identifier-syntax">lxs_scanning_text_depth</span><span class="plain-syntax">, </span><span class="identifier-syntax">why</span><span class="plain-syntax">);</span>
+<span class="plain-syntax">    </span><span class="named-paragraph-container code-font"><a href="3-lxr.html#SP28_1" class="named-paragraph-link"><span class="named-paragraph"><span class="mathjax_process">Maintain depth invariants</span></span><span class="named-paragraph-number">28.1</span></a></span><span class="plain-syntax">;</span>
+<span class="plain-syntax">}</span>
+
+<span class="type-syntax">void</span><span class="plain-syntax"> </span><span class="function-syntax">Lexer::go_shallower</span><button class="popup" onclick="togglePopup('usagePopup26')"><span class="comment-syntax">?</span><span class="popuptext" id="usagePopup26">Usage of <span class="code-font"><span class="function-syntax">Lexer::go_shallower</span></span>:<br/><a href="3-lxr.html#SP29_4">&#167;29.4</a>, <a href="3-lxr.html#SP29_8">&#167;29.8</a>, <a href="3-lxr.html#SP29_10">&#167;29.10</a></span></button><span class="plain-syntax">(</span><span class="type-syntax">char</span><span class="plain-syntax"> *</span><span class="identifier-syntax">why</span><span class="plain-syntax">) {</span>
+<span class="plain-syntax">    </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">lxs_scanning_text_depth</span><span class="plain-syntax"> &gt; </span><span class="constant-syntax">0</span><span class="plain-syntax">) {</span>
+<span class="plain-syntax">        </span><span class="identifier-syntax">lxs_scanning_text_depth</span><span class="plain-syntax">--;</span>
+<span class="plain-syntax">        </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="constant-syntax">TRACE_FEEDER</span><span class="plain-syntax">) </span><span class="identifier-syntax">PRINT</span><span class="plain-syntax">(</span><span class="string-syntax">"-1 to %d because %s "</span><span class="plain-syntax">, </span><span class="identifier-syntax">lxs_scanning_text_depth</span><span class="plain-syntax">, </span><span class="identifier-syntax">why</span><span class="plain-syntax">);</span>
+<span class="plain-syntax">    }</span>
+<span class="plain-syntax">    </span><span class="named-paragraph-container code-font"><a href="3-lxr.html#SP28_1" class="named-paragraph-link"><span class="named-paragraph"><span class="mathjax_process">Maintain depth invariants</span></span><span class="named-paragraph-number">28.1</span></a></span><span class="plain-syntax">;</span>
+<span class="plain-syntax">}</span>
+</pre>
+<p class="commentary firstcommentary"><a id="SP28_1" class="paragraph-anchor"></a><b>&#167;28.1. </b> <span class="named-paragraph-container code-font"><span class="named-paragraph-defn">Maintain depth invariants</span><span class="named-paragraph-number">28.1</span></span> =</p>
+
+<pre class="displayed-code all-displayed-code code-font">
+<span class="plain-syntax">    </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">lxs_scanning_text_depth</span><span class="plain-syntax"> &lt;= </span><span class="constant-syntax">1</span><span class="plain-syntax">) { </span><span class="identifier-syntax">lxs_literal_mode</span><span class="plain-syntax"> = </span><span class="identifier-syntax">FALSE</span><span class="plain-syntax">; }</span>
+<span class="plain-syntax">    </span><span class="reserved-syntax">else</span><span class="plain-syntax"> { </span><span class="identifier-syntax">lxs_literal_mode</span><span class="plain-syntax"> = </span><span class="identifier-syntax">TRUE</span><span class="plain-syntax">; </span><span class="identifier-syntax">lxs_kind_of_word</span><span class="plain-syntax"> = </span><span class="constant-syntax">STRING_KW</span><span class="plain-syntax">; }</span>
+</pre>
+<ul class="endnotetexts"><li>This code is used in <a href="3-lxr.html#SP28">&#167;28</a> (twice).</li></ul>
+<div class="lsmarkdown">
+<p class="commentary firstcommentary"><a id="SP29" class="paragraph-anchor"></a><b>&#167;29. Lexing one character at a time.</b>  We can think of characters as a stream of differently-coloured marbles,
 flowing from various sources into a hopper above our marble-sorting
 machine. The hopper lets the marbles drop through one at a time into the
 mechanism below, but inserts transparent glass marbles of its own on either
@@ -830,56 +898,50 @@ surviving marbles is the sequence of characters starting at <code>lexer_word</co
 extending to <code>lexer_hwm-1</code>.</p>
 </div>
 <pre class="displayed-code all-displayed-code code-font">
-<span class="type-syntax">void</span><span class="plain-syntax"> </span><span class="function-syntax">Lexer::feed_char_into_lexer</span><button class="popup" onclick="togglePopup('usagePopup25')"><span class="comment-syntax">?</span><span class="popuptext" id="usagePopup25">Usage of <span class="code-font"><span class="function-syntax">Lexer::feed_char_into_lexer</span></span>:<br/><a href="3-lxr.html#SP25_1">&#167;25.1</a>, <a href="3-lxr.html#SP27">&#167;27</a>, <a href="3-lxr.html#SP28_3">&#167;28.3</a>, <a href="3-lxr.html#SP28_8">&#167;28.8</a>, <a href="3-lxr.html#SP28_9">&#167;28.9</a></span></button><span class="plain-syntax">(</span><span class="type-syntax">inchar32_t</span><span class="plain-syntax"> </span><span class="identifier-syntax">c</span><span class="plain-syntax">) {</span>
+<span class="type-syntax">void</span><span class="plain-syntax"> </span><span class="function-syntax">Lexer::feed_char_into_lexer</span><button class="popup" onclick="togglePopup('usagePopup27')"><span class="comment-syntax">?</span><span class="popuptext" id="usagePopup27">Usage of <span class="code-font"><span class="function-syntax">Lexer::feed_char_into_lexer</span></span>:<br/><a href="3-lxr.html#SP25_1">&#167;25.1</a>, <a href="3-lxr.html#SP27">&#167;27</a>, <a href="3-lxr.html#SP29_3">&#167;29.3</a>, <a href="3-lxr.html#SP29_9">&#167;29.9</a>, <a href="3-lxr.html#SP29_10">&#167;29.10</a></span></button><span class="plain-syntax">(</span><span class="type-syntax">inchar32_t</span><span class="plain-syntax"> </span><span class="identifier-syntax">c</span><span class="plain-syntax">) {</span>
+<span class="plain-syntax">    </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="constant-syntax">TRACE_FEEDER</span><span class="plain-syntax">) </span><span class="identifier-syntax">PRINT</span><span class="plain-syntax">(</span><span class="string-syntax">"%d%c %c "</span><span class="plain-syntax">,</span>
+<span class="plain-syntax">        </span><span class="identifier-syntax">lxs_scanning_text_depth</span><span class="plain-syntax">, (</span><span class="identifier-syntax">lxs_literal_mode</span><span class="plain-syntax">)?</span><span class="character-syntax">'L'</span><span class="plain-syntax">:</span><span class="character-syntax">'_'</span><span class="plain-syntax">, </span><span class="identifier-syntax">c</span><span class="plain-syntax">);</span>
 <span class="plain-syntax">    </span><a href="3-lxr.html#SP14" class="function-link"><span class="function-syntax">Lexer::ensure_lexer_hwm_can_be_raised_by</span></a><span class="plain-syntax">(</span><span class="constant-syntax">MAX_WORD_LENGTH</span><span class="plain-syntax">, </span><span class="identifier-syntax">TRUE</span><span class="plain-syntax">);</span>
 <span class="plain-syntax">    </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">lxs_literal_mode</span><span class="plain-syntax">) {</span>
-<span class="plain-syntax">        </span><span class="named-paragraph-container code-font"><a href="3-lxr.html#SP28_7" class="named-paragraph-link"><span class="named-paragraph"><span class="mathjax_process">Contemplate leaving literal mode</span></span><span class="named-paragraph-number">28.7</span></a></span><span class="plain-syntax">;</span>
+<span class="plain-syntax">        </span><span class="named-paragraph-container code-font"><a href="3-lxr.html#SP29_8" class="named-paragraph-link"><span class="named-paragraph"><span class="mathjax_process">Contemplate leaving literal mode</span></span><span class="named-paragraph-number">29.8</span></a></span><span class="plain-syntax">;</span>
 <span class="plain-syntax">        </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">lxs_kind_of_word</span><span class="plain-syntax"> == </span><span class="constant-syntax">STRING_KW</span><span class="plain-syntax">) {</span>
-<span class="plain-syntax">            </span><span class="named-paragraph-container code-font"><a href="3-lxr.html#SP28_8" class="named-paragraph-link"><span class="named-paragraph"><span class="mathjax_process">Force string division at the start of a text substitution, if necessary</span></span><span class="named-paragraph-number">28.8</span></a></span><span class="plain-syntax">;</span>
-<span class="plain-syntax">            </span><span class="named-paragraph-container code-font"><a href="3-lxr.html#SP28_4" class="named-paragraph-link"><span class="named-paragraph"><span class="mathjax_process">Soak up whitespace around line breaks inside a literal string</span></span><span class="named-paragraph-number">28.4</span></a></span><span class="plain-syntax">;</span>
+<span class="plain-syntax">            </span><span class="named-paragraph-container code-font"><a href="3-lxr.html#SP29_9" class="named-paragraph-link"><span class="named-paragraph"><span class="mathjax_process">Force string division at the start of a text substitution, if necessary</span></span><span class="named-paragraph-number">29.9</span></a></span><span class="plain-syntax">;</span>
+<span class="plain-syntax">            </span><span class="named-paragraph-container code-font"><a href="3-lxr.html#SP29_5" class="named-paragraph-link"><span class="named-paragraph"><span class="mathjax_process">Soak up whitespace around line breaks inside a literal string</span></span><span class="named-paragraph-number">29.5</span></a></span><span class="plain-syntax">;</span>
 <span class="plain-syntax">        }</span>
 <span class="plain-syntax">    }</span>
 
 <span class="plain-syntax">    </span><span class="comment-syntax">/* whitespace outside literal mode ends any partly built word and need not be recorded */</span>
 <span class="plain-syntax">    </span><span class="reserved-syntax">if</span><span class="plain-syntax"> ((</span><span class="identifier-syntax">lxs_literal_mode</span><span class="plain-syntax"> == </span><span class="identifier-syntax">FALSE</span><span class="plain-syntax">) &amp;&amp; (</span><span class="identifier-syntax">is_whitespace</span><span class="plain-syntax">(</span><span class="identifier-syntax">c</span><span class="plain-syntax">))) {</span>
-<span class="plain-syntax">        </span><span class="named-paragraph-container code-font"><a href="3-lxr.html#SP28_1" class="named-paragraph-link"><span class="named-paragraph"><span class="mathjax_process">Admire the texture of the whitespace</span></span><span class="named-paragraph-number">28.1</span></a></span><span class="plain-syntax">;</span>
-<span class="plain-syntax">        </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">lexer_word</span><span class="plain-syntax"> != </span><span class="identifier-syntax">lexer_hwm</span><span class="plain-syntax">) </span><span class="named-paragraph-container code-font"><a href="3-lxr.html#SP28_5" class="named-paragraph-link"><span class="named-paragraph"><span class="mathjax_process">Complete the current word</span></span><span class="named-paragraph-number">28.5</span></a></span><span class="plain-syntax">;</span>
-<span class="plain-syntax">        </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">c</span><span class="plain-syntax"> == </span><span class="character-syntax">'\n'</span><span class="plain-syntax">) </span><span class="named-paragraph-container code-font"><a href="3-lxr.html#SP28_3" class="named-paragraph-link"><span class="named-paragraph"><span class="mathjax_process">Line break outside a literal</span></span><span class="named-paragraph-number">28.3</span></a></span><span class="plain-syntax">;</span>
-<span class="plain-syntax">        </span><span class="reserved-syntax">return</span><span class="plain-syntax">;</span>
-<span class="plain-syntax">    }</span>
+<span class="plain-syntax">        </span><span class="named-paragraph-container code-font"><a href="3-lxr.html#SP29_1" class="named-paragraph-link"><span class="named-paragraph"><span class="mathjax_process">Admire the texture of the whitespace</span></span><span class="named-paragraph-number">29.1</span></a></span><span class="plain-syntax">;</span>
+<span class="plain-syntax">        </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">lexer_word</span><span class="plain-syntax"> != </span><span class="identifier-syntax">lexer_hwm</span><span class="plain-syntax">) </span><span class="named-paragraph-container code-font"><a href="3-lxr.html#SP29_6" class="named-paragraph-link"><span class="named-paragraph"><span class="mathjax_process">Complete the current word</span></span><span class="named-paragraph-number">29.6</span></a></span><span class="plain-syntax">;</span>
+<span class="plain-syntax">        </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">c</span><span class="plain-syntax"> == </span><span class="character-syntax">'\n'</span><span class="plain-syntax">) </span><span class="named-paragraph-container code-font"><a href="3-lxr.html#SP29_3" class="named-paragraph-link"><span class="named-paragraph"><span class="mathjax_process">Line break outside a literal</span></span><span class="named-paragraph-number">29.3</span></a></span><span class="plain-syntax">;</span>
+<span class="plain-syntax">    } </span><span class="reserved-syntax">else</span><span class="plain-syntax"> {</span>
+<span class="plain-syntax">        </span><span class="named-paragraph-container code-font"><a href="3-lxr.html#SP29_4" class="named-paragraph-link"><span class="named-paragraph"><span class="mathjax_process">Note the use of internal text literal delimiters</span></span><span class="named-paragraph-number">29.4</span></a></span><span class="plain-syntax">;</span>
+<span class="plain-syntax">        </span><span class="comment-syntax">/* otherwise record the current character as part of the word being built */</span>
+<span class="plain-syntax">        *(</span><span class="identifier-syntax">lexer_hwm</span><span class="plain-syntax">++) = </span><span class="identifier-syntax">c</span><span class="plain-syntax">;</span>
 
-<span class="plain-syntax">    </span><span class="reserved-syntax">if</span><span class="plain-syntax"> ((</span><span class="identifier-syntax">lxs_this_word_is_empty_so_far</span><span class="plain-syntax">) &amp;&amp; (</span><span class="identifier-syntax">lxs_scanning_text_substitution_depth</span><span class="plain-syntax"> % </span><span class="constant-syntax">2</span><span class="plain-syntax"> == </span><span class="constant-syntax">1</span><span class="plain-syntax">)) {</span>
-<span class="plain-syntax">        </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">c</span><span class="plain-syntax"> == </span><span class="constant-syntax">INNER_STRING_BEGIN</span><span class="plain-syntax">) {</span>
-<span class="plain-syntax">            </span><span class="identifier-syntax">c</span><span class="plain-syntax"> = </span><span class="constant-syntax">STRING_BEGIN</span><span class="plain-syntax">;</span>
-<span class="plain-syntax">            </span><span class="identifier-syntax">lxs_scanning_text_substitution_depth</span><span class="plain-syntax">++;</span>
+<span class="plain-syntax">        </span><span class="named-paragraph-container code-font"><a href="3-lxr.html#SP29_10" class="named-paragraph-link"><span class="named-paragraph"><span class="mathjax_process">Force string division at the end of a text substitution, if necessary</span></span><span class="named-paragraph-number">29.10</span></a></span><span class="plain-syntax">;</span>
+
+<span class="plain-syntax">        </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">lxs_this_word_is_empty_so_far</span><span class="plain-syntax">) {</span>
+<span class="plain-syntax">            </span><span class="named-paragraph-container code-font"><a href="3-lxr.html#SP29_2" class="named-paragraph-link"><span class="named-paragraph"><span class="mathjax_process">Look at recent whitespace to see what break it followed</span></span><span class="named-paragraph-number">29.2</span></a></span><span class="plain-syntax">;</span>
+<span class="plain-syntax">            </span><span class="named-paragraph-container code-font"><a href="3-lxr.html#SP29_7" class="named-paragraph-link"><span class="named-paragraph"><span class="mathjax_process">Contemplate entering literal mode</span></span><span class="named-paragraph-number">29.7</span></a></span><span class="plain-syntax">;</span>
 <span class="plain-syntax">        }</span>
+
+<span class="plain-syntax">        </span><span class="identifier-syntax">lxs_this_word_is_empty_so_far</span><span class="plain-syntax"> = </span><span class="identifier-syntax">FALSE</span><span class="plain-syntax">;</span>
+<span class="plain-syntax">        </span><span class="identifier-syntax">lxs_this_line_is_empty_so_far</span><span class="plain-syntax"> = </span><span class="identifier-syntax">FALSE</span><span class="plain-syntax">;</span>
 <span class="plain-syntax">    }</span>
-
-<span class="plain-syntax">    </span><span class="comment-syntax">/* otherwise record the current character as part of the word being built */</span>
-<span class="plain-syntax">    *(</span><span class="identifier-syntax">lexer_hwm</span><span class="plain-syntax">++) = </span><span class="identifier-syntax">c</span><span class="plain-syntax">;</span>
-
-<span class="plain-syntax">    </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">lxs_scanning_text_substitution_depth</span><span class="plain-syntax"> % </span><span class="constant-syntax">2</span><span class="plain-syntax"> == </span><span class="constant-syntax">1</span><span class="plain-syntax">) {</span>
-<span class="plain-syntax">        </span><span class="named-paragraph-container code-font"><a href="3-lxr.html#SP28_9" class="named-paragraph-link"><span class="named-paragraph"><span class="mathjax_process">Force string division at the end of a text substitution, if necessary</span></span><span class="named-paragraph-number">28.9</span></a></span><span class="plain-syntax">;</span>
-<span class="plain-syntax">    }</span>
-
-<span class="plain-syntax">    </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">lxs_this_word_is_empty_so_far</span><span class="plain-syntax">) {</span>
-<span class="plain-syntax">        </span><span class="named-paragraph-container code-font"><a href="3-lxr.html#SP28_2" class="named-paragraph-link"><span class="named-paragraph"><span class="mathjax_process">Look at recent whitespace to see what break it followed</span></span><span class="named-paragraph-number">28.2</span></a></span><span class="plain-syntax">;</span>
-<span class="plain-syntax">        </span><span class="named-paragraph-container code-font"><a href="3-lxr.html#SP28_6" class="named-paragraph-link"><span class="named-paragraph"><span class="mathjax_process">Contemplate entering literal mode</span></span><span class="named-paragraph-number">28.6</span></a></span><span class="plain-syntax">;</span>
-<span class="plain-syntax">    }</span>
-
-<span class="plain-syntax">    </span><span class="identifier-syntax">lxs_this_word_is_empty_so_far</span><span class="plain-syntax"> = </span><span class="identifier-syntax">FALSE</span><span class="plain-syntax">;</span>
-<span class="plain-syntax">    </span><span class="identifier-syntax">lxs_this_line_is_empty_so_far</span><span class="plain-syntax"> = </span><span class="identifier-syntax">FALSE</span><span class="plain-syntax">;</span>
+<span class="plain-syntax">    </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="constant-syntax">TRACE_FEEDER</span><span class="plain-syntax">) </span><span class="identifier-syntax">PRINT</span><span class="plain-syntax">(</span><span class="string-syntax">"\n"</span><span class="plain-syntax">);</span>
 <span class="plain-syntax">}</span>
 </pre>
 <div class="lsmarkdown">
-<p class="commentary firstcommentary"><a id="SP28_1" class="paragraph-anchor"></a><b>&#167;28.1. Dealing with whitespace.</b>  Let's deal with the different textures of whitespace first, as these are
+<p class="commentary firstcommentary"><a id="SP29_1" class="paragraph-anchor"></a><b>&#167;29.1. Dealing with whitespace.</b>  Let's deal with the different textures of whitespace first, as these are
 surprisingly rich all by themselves.</p>
 <p>The following keeps track of the biggest white space character it has seen
 of late, ranking newlines bigger than tabs, which are in turn bigger than
 spaces; and it counts up the number of tabs it has seen (cancelling
 back to none if a newline is found).</p>
 </div>
-<p class="commentary"><span class="named-paragraph-container code-font"><span class="named-paragraph-defn">Admire the texture of the whitespace</span><span class="named-paragraph-number">28.1</span></span> =</p>
+<p class="commentary"><span class="named-paragraph-container code-font"><span class="named-paragraph-defn">Admire the texture of the whitespace</span><span class="named-paragraph-number">29.1</span></span> =</p>
 
 <pre class="displayed-code all-displayed-code code-font">
 <span class="plain-syntax">    </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">c</span><span class="plain-syntax"> == </span><span class="character-syntax">'\t'</span><span class="plain-syntax">) {</span>
@@ -891,15 +953,15 @@ back to none if a newline is found).</p>
 <span class="plain-syntax">        </span><span class="identifier-syntax">lxs_most_significant_space_char</span><span class="plain-syntax"> = </span><span class="character-syntax">'\n'</span><span class="plain-syntax">;</span>
 <span class="plain-syntax">    }</span>
 </pre>
-<ul class="endnotetexts"><li>This code is used in <a href="3-lxr.html#SP28">&#167;28</a>.</li></ul>
+<ul class="endnotetexts"><li>This code is used in <a href="3-lxr.html#SP29">&#167;29</a>.</li></ul>
 <div class="lsmarkdown">
-<p class="commentary firstcommentary"><a id="SP28_2" class="paragraph-anchor"></a><b>&#167;28.2. </b>  To recall: we need to know what kind of whitespace prefaces each word
+<p class="commentary firstcommentary"><a id="SP29_2" class="paragraph-anchor"></a><b>&#167;29.2. </b>  To recall: we need to know what kind of whitespace prefaces each word
 the lexer records.</p>
 <p>When we record the first character of a new word, it cannot be whitespace,
 but it probably follows a sequence of one or more whitespace characters,
 and the code in the previous paragraph has been watching them for us.</p>
 </div>
-<p class="commentary"><span class="named-paragraph-container code-font"><span class="named-paragraph-defn">Look at recent whitespace to see what break it followed</span><span class="named-paragraph-number">28.2</span></span> =</p>
+<p class="commentary"><span class="named-paragraph-container code-font"><span class="named-paragraph-defn">Look at recent whitespace to see what break it followed</span><span class="named-paragraph-number">29.2</span></span> =</p>
 
 <pre class="displayed-code all-displayed-code code-font">
 <span class="plain-syntax">    </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (((</span><span class="identifier-syntax">lxs_this_line_is_empty_so_far</span><span class="plain-syntax">) || (</span><span class="identifier-syntax">lxs_most_significant_space_char</span><span class="plain-syntax"> == </span><span class="character-syntax">'\n'</span><span class="plain-syntax">))</span>
@@ -912,26 +974,53 @@ and the code in the previous paragraph has been watching them for us.</p>
 <span class="plain-syntax">    </span><span class="identifier-syntax">lxs_most_significant_space_char</span><span class="plain-syntax"> = </span><span class="character-syntax">' '</span><span class="plain-syntax">; </span><span class="comment-syntax">/* waiting for the next run of whitespace, after this word */</span>
 <span class="plain-syntax">    </span><span class="identifier-syntax">lxs_number_of_tab_stops</span><span class="plain-syntax"> = </span><span class="constant-syntax">0</span><span class="plain-syntax">;</span>
 </pre>
-<ul class="endnotetexts"><li>This code is used in <a href="3-lxr.html#SP28">&#167;28</a>.</li></ul>
+<ul class="endnotetexts"><li>This code is used in <a href="3-lxr.html#SP29">&#167;29</a>.</li></ul>
 <div class="lsmarkdown">
-<p class="commentary firstcommentary"><a id="SP28_3" class="paragraph-anchor"></a><b>&#167;28.3. </b>  Line breaks are usually like any other white space, if we are outside
+<p class="commentary firstcommentary"><a id="SP29_3" class="paragraph-anchor"></a><b>&#167;29.3. </b>  Line breaks are usually like any other white space, if we are outside
 literal mode, but we want to keep an eye out for paragraph breaks, because
 these are sometimes semantically meaningful in Inform and so cannot be
 discarded. A paragraph break is converted into a special &quot;divider&quot; word.</p>
 </div>
-<p class="commentary"><span class="named-paragraph-container code-font"><span class="named-paragraph-defn">Line break outside a literal</span><span class="named-paragraph-number">28.3</span></span> =</p>
+<p class="commentary"><span class="named-paragraph-container code-font"><span class="named-paragraph-defn">Line break outside a literal</span><span class="named-paragraph-number">29.3</span></span> =</p>
 
 <pre class="displayed-code all-displayed-code code-font">
 <span class="plain-syntax">    </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">lxs_this_line_is_empty_so_far</span><span class="plain-syntax">) {</span>
 <span class="plain-syntax">        </span><span class="reserved-syntax">for</span><span class="plain-syntax"> (</span><span class="type-syntax">int</span><span class="plain-syntax"> </span><span class="identifier-syntax">i</span><span class="plain-syntax">=0; </span><span class="constant-syntax">PARAGRAPH_BREAK</span><span class="plain-syntax">[</span><span class="identifier-syntax">i</span><span class="plain-syntax">]; </span><span class="identifier-syntax">i</span><span class="plain-syntax">++)</span>
-<span class="plain-syntax">            </span><a href="3-lxr.html#SP28" class="function-link"><span class="function-syntax">Lexer::feed_char_into_lexer</span></a><span class="plain-syntax">(</span><span class="constant-syntax">PARAGRAPH_BREAK</span><span class="plain-syntax">[</span><span class="identifier-syntax">i</span><span class="plain-syntax">]);</span>
-<span class="plain-syntax">        </span><a href="3-lxr.html#SP28" class="function-link"><span class="function-syntax">Lexer::feed_char_into_lexer</span></a><span class="plain-syntax">(</span><span class="character-syntax">' '</span><span class="plain-syntax">);</span>
+<span class="plain-syntax">            </span><a href="3-lxr.html#SP29" class="function-link"><span class="function-syntax">Lexer::feed_char_into_lexer</span></a><span class="plain-syntax">(</span><span class="constant-syntax">PARAGRAPH_BREAK</span><span class="plain-syntax">[</span><span class="identifier-syntax">i</span><span class="plain-syntax">]);</span>
+<span class="plain-syntax">        </span><a href="3-lxr.html#SP29" class="function-link"><span class="function-syntax">Lexer::feed_char_into_lexer</span></a><span class="plain-syntax">(</span><span class="character-syntax">' '</span><span class="plain-syntax">);</span>
 <span class="plain-syntax">    }</span>
 <span class="plain-syntax">    </span><span class="identifier-syntax">lxs_this_line_is_empty_so_far</span><span class="plain-syntax"> = </span><span class="identifier-syntax">TRUE</span><span class="plain-syntax">;</span>
 </pre>
-<ul class="endnotetexts"><li>This code is used in <a href="3-lxr.html#SP28">&#167;28</a>.</li></ul>
+<ul class="endnotetexts"><li>This code is used in <a href="3-lxr.html#SP29">&#167;29</a>.</li></ul>
 <div class="lsmarkdown">
-<p class="commentary firstcommentary"><a id="SP28_4" class="paragraph-anchor"></a><b>&#167;28.4. </b>  When working through a literal string, a new-line together with any
+<p class="commentary firstcommentary"><a id="SP29_4" class="paragraph-anchor"></a><b>&#167;29.4. </b>  The backtick internal text delimiters are relevant only inside a text
+substitution, i.e., when the depth is positive. If the depth is odd, we are
+in substitution wording and ready to open internal text, and if it is even we
+are in a literal already and ready to close it.</p>
+<p>The outermost pair of internal text delimiters, only, are converted to
+regular text delimiters: these are the ones which open from depth 1 (raising
+it to 2) or close from depth 2 (lowering it to 1).</p>
+</div>
+<p class="commentary"><span class="named-paragraph-container code-font"><span class="named-paragraph-defn">Note the use of internal text literal delimiters</span><span class="named-paragraph-number">29.4</span></span> =</p>
+
+<pre class="displayed-code all-displayed-code code-font">
+<span class="plain-syntax">    </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">lxs_scanning_text_depth</span><span class="plain-syntax"> &gt; </span><span class="constant-syntax">0</span><span class="plain-syntax">) {</span>
+<span class="plain-syntax">        </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">lxs_scanning_text_depth</span><span class="plain-syntax"> % </span><span class="constant-syntax">2</span><span class="plain-syntax"> == </span><span class="constant-syntax">1</span><span class="plain-syntax">) {</span>
+<span class="plain-syntax">            </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">c</span><span class="plain-syntax"> == </span><span class="constant-syntax">INNER_STRING_BEGIN</span><span class="plain-syntax">) {</span>
+<span class="plain-syntax">                </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">lxs_scanning_text_depth</span><span class="plain-syntax"> == </span><span class="constant-syntax">1</span><span class="plain-syntax">) </span><span class="identifier-syntax">c</span><span class="plain-syntax"> = </span><span class="constant-syntax">STRING_BEGIN</span><span class="plain-syntax">;</span>
+<span class="plain-syntax">                </span><a href="3-lxr.html#SP28" class="function-link"><span class="function-syntax">Lexer::go_deeper</span></a><span class="plain-syntax">(</span><span class="string-syntax">"inner-open found at odd depth"</span><span class="plain-syntax">);</span>
+<span class="plain-syntax">            }</span>
+<span class="plain-syntax">        } </span><span class="reserved-syntax">else</span><span class="plain-syntax"> {</span>
+<span class="plain-syntax">            </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">c</span><span class="plain-syntax"> == </span><span class="constant-syntax">INNER_STRING_END</span><span class="plain-syntax">) {</span>
+<span class="plain-syntax">                </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">lxs_scanning_text_depth</span><span class="plain-syntax"> == </span><span class="constant-syntax">2</span><span class="plain-syntax">) </span><span class="identifier-syntax">c</span><span class="plain-syntax"> = </span><span class="constant-syntax">STRING_END</span><span class="plain-syntax">;</span>
+<span class="plain-syntax">                </span><a href="3-lxr.html#SP28" class="function-link"><span class="function-syntax">Lexer::go_shallower</span></a><span class="plain-syntax">(</span><span class="string-syntax">"inner-end found at even depth"</span><span class="plain-syntax">);</span>
+<span class="plain-syntax">            }</span>
+<span class="plain-syntax">        }</span>
+<span class="plain-syntax">    }</span>
+</pre>
+<ul class="endnotetexts"><li>This code is used in <a href="3-lxr.html#SP29">&#167;29</a>.</li></ul>
+<div class="lsmarkdown">
+<p class="commentary firstcommentary"><a id="SP29_5" class="paragraph-anchor"></a><b>&#167;29.5. </b>  When working through a literal string, a new-line together with any
 preceding whitespace is converted into a single space character, and we
 enter &quot;soak up spaces&quot; mode: in which mode, any subsequent whitespace is
 ignored until something else is reached. If we reach another new-line while
@@ -941,7 +1030,7 @@ space <code>&quot; &quot;</code> but to two forced newlines in quick succession.
 paragraph breaks in literal strings are converted to codes which will make
 Inform print a paragraph break at run-time.</p>
 </div>
-<p class="commentary"><span class="named-paragraph-container code-font"><span class="named-paragraph-defn">Soak up whitespace around line breaks inside a literal string</span><span class="named-paragraph-number">28.4</span></span> =</p>
+<p class="commentary"><span class="named-paragraph-container code-font"><span class="named-paragraph-defn">Soak up whitespace around line breaks inside a literal string</span><span class="named-paragraph-number">29.5</span></span> =</p>
 
 <pre class="displayed-code all-displayed-code code-font">
 <span class="plain-syntax">    </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">lxs_string_soak_up_spaces_mode</span><span class="plain-syntax">) {</span>
@@ -959,9 +1048,9 @@ Inform print a paragraph break at run-time.</p>
 <span class="plain-syntax">        </span><span class="identifier-syntax">lxs_string_soak_up_spaces_mode</span><span class="plain-syntax"> = </span><span class="identifier-syntax">TRUE</span><span class="plain-syntax">;</span>
 <span class="plain-syntax">    }</span>
 </pre>
-<ul class="endnotetexts"><li>This code is used in <a href="3-lxr.html#SP28">&#167;28</a>.</li></ul>
+<ul class="endnotetexts"><li>This code is used in <a href="3-lxr.html#SP29">&#167;29</a>.</li></ul>
 <div class="lsmarkdown">
-<p class="commentary firstcommentary"><a id="SP28_5" class="paragraph-anchor"></a><b>&#167;28.5. Completing a word.</b>  Outside of whitespace, then, our word (whatever it was — ordinary word,
+<p class="commentary firstcommentary"><a id="SP29_6" class="paragraph-anchor"></a><b>&#167;29.6. Completing a word.</b>  Outside of whitespace, then, our word (whatever it was — ordinary word,
 literal string, I6 insertion or comment) has been stored character by
 character at the steadily rising high water mark. We have now hit the end
 by reaching whitespace (in the case of a literal, this has happened because
@@ -969,7 +1058,7 @@ we found the end of the literal, escaped literal mode, and then hit
 whitespace). The start of the word is at <code>lexer_word</code>; the last character
 is stored just below <code>lexer_hwm</code>.</p>
 </div>
-<p class="commentary"><span class="named-paragraph-container code-font"><span class="named-paragraph-defn">Complete the current word</span><span class="named-paragraph-number">28.5</span></span> =</p>
+<p class="commentary"><span class="named-paragraph-container code-font"><span class="named-paragraph-defn">Complete the current word</span><span class="named-paragraph-number">29.6</span></span> =</p>
 
 <pre class="displayed-code all-displayed-code code-font">
 <span class="plain-syntax">    *</span><span class="identifier-syntax">lexer_hwm</span><span class="plain-syntax">++ = </span><span class="constant-syntax">0</span><span class="plain-syntax">; </span><span class="comment-syntax">/* terminate the current word as a C string */</span>
@@ -978,8 +1067,8 @@ is stored just below <code>lexer_hwm</code>.</p>
 <span class="plain-syntax">        </span><span class="identifier-syntax">lexer_wait_for_dashes</span><span class="plain-syntax"> = </span><span class="identifier-syntax">FALSE</span><span class="plain-syntax">; </span><span class="comment-syntax">/* our long wait for documentation is over */</span>
 
 <span class="plain-syntax">    </span><span class="reserved-syntax">if</span><span class="plain-syntax"> ((</span><span class="identifier-syntax">lexer_wait_for_dashes</span><span class="plain-syntax"> == </span><span class="identifier-syntax">FALSE</span><span class="plain-syntax">) &amp;&amp; (</span><span class="identifier-syntax">lxs_kind_of_word</span><span class="plain-syntax"> != </span><span class="constant-syntax">COMMENT_KW</span><span class="plain-syntax">)) {</span>
-<span class="plain-syntax">        </span><span class="named-paragraph-container code-font"><a href="3-lxr.html#SP28_5_1" class="named-paragraph-link"><span class="named-paragraph"><span class="mathjax_process">Issue problem message and truncate if over maximum length for what it is</span></span><span class="named-paragraph-number">28.5.1</span></a></span><span class="plain-syntax">;</span>
-<span class="plain-syntax">        </span><span class="named-paragraph-container code-font"><a href="3-lxr.html#SP28_5_2" class="named-paragraph-link"><span class="named-paragraph"><span class="mathjax_process">Store everything about the word except its break, which we already know</span></span><span class="named-paragraph-number">28.5.2</span></a></span><span class="plain-syntax">;</span>
+<span class="plain-syntax">        </span><span class="named-paragraph-container code-font"><a href="3-lxr.html#SP29_6_1" class="named-paragraph-link"><span class="named-paragraph"><span class="mathjax_process">Issue problem message and truncate if over maximum length for what it is</span></span><span class="named-paragraph-number">29.6.1</span></a></span><span class="plain-syntax">;</span>
+<span class="plain-syntax">        </span><span class="named-paragraph-container code-font"><a href="3-lxr.html#SP29_6_2" class="named-paragraph-link"><span class="named-paragraph"><span class="mathjax_process">Store everything about the word except its break, which we already know</span></span><span class="named-paragraph-number">29.6.2</span></a></span><span class="plain-syntax">;</span>
 <span class="plain-syntax">    }</span>
 
 <span class="plain-syntax">    </span><span class="comment-syntax">/* now get ready for what we expect by default to be an ordinary word next */</span>
@@ -987,9 +1076,9 @@ is stored just below <code>lexer_hwm</code>.</p>
 <span class="plain-syntax">    </span><span class="identifier-syntax">lxs_this_word_is_empty_so_far</span><span class="plain-syntax"> = </span><span class="identifier-syntax">TRUE</span><span class="plain-syntax">;</span>
 <span class="plain-syntax">    </span><span class="identifier-syntax">lxs_kind_of_word</span><span class="plain-syntax"> = </span><span class="constant-syntax">ORDINARY_KW</span><span class="plain-syntax">;</span>
 </pre>
-<ul class="endnotetexts"><li>This code is used in <a href="3-lxr.html#SP28">&#167;28</a>.</li></ul>
+<ul class="endnotetexts"><li>This code is used in <a href="3-lxr.html#SP29">&#167;29</a>.</li></ul>
 <div class="lsmarkdown">
-<p class="commentary firstcommentary"><a id="SP28_5_1" class="paragraph-anchor"></a><b>&#167;28.5.1. </b>  Note that here we are recording either an ordinary word, a literal string
+<p class="commentary firstcommentary"><a id="SP29_6_1" class="paragraph-anchor"></a><b>&#167;29.6.1. </b>  Note that here we are recording either an ordinary word, a literal string
 or a literal I6 insertion: comments are also literal, but are thrown away,
 and do not come here.</p>
 </div>
@@ -1001,7 +1090,7 @@ and do not come here.</p>
 </pre>
 <pre class="definitions code-font"><span class="definition-keyword">enumerate</span> <span class="identifier-syntax">I6_TOO_LONG_LEXERERROR</span> 
 </pre>
-<p class="commentary"><span class="named-paragraph-container code-font"><span class="named-paragraph-defn">Issue problem message and truncate if over maximum length for what it is</span><span class="named-paragraph-number">28.5.1</span></span> =</p>
+<p class="commentary"><span class="named-paragraph-container code-font"><span class="named-paragraph-defn">Issue problem message and truncate if over maximum length for what it is</span><span class="named-paragraph-number">29.6.1</span></span> =</p>
 
 <pre class="displayed-code all-displayed-code code-font">
 <span class="plain-syntax">    </span><span class="type-syntax">int</span><span class="plain-syntax"> </span><span class="identifier-syntax">len</span><span class="plain-syntax"> = </span><span class="identifier-syntax">Wide::len</span><span class="plain-syntax">(</span><span class="identifier-syntax">lexer_word</span><span class="plain-syntax">), </span><span class="identifier-syntax">max_len</span><span class="plain-syntax"> = </span><span class="constant-syntax">MAX_WORD_LENGTH</span><span class="plain-syntax">;</span>
@@ -1011,18 +1100,18 @@ and do not come here.</p>
 <span class="plain-syntax">    </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">len</span><span class="plain-syntax"> &gt; </span><span class="identifier-syntax">max_len</span><span class="plain-syntax">) {</span>
 <span class="plain-syntax">        </span><span class="identifier-syntax">lexer_word</span><span class="plain-syntax">[</span><span class="identifier-syntax">max_len</span><span class="plain-syntax">] = </span><span class="constant-syntax">0</span><span class="plain-syntax">; </span><span class="comment-syntax">/* truncate to its maximum length */</span>
 <span class="plain-syntax">        </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">lxs_kind_of_word</span><span class="plain-syntax"> == </span><span class="constant-syntax">STRING_KW</span><span class="plain-syntax">) {</span>
-<span class="plain-syntax">            </span><a href="3-lxr.html#SP31" class="function-link"><span class="function-syntax">Lexer::lexer_problem_handler</span></a><span class="plain-syntax">(</span><span class="constant-syntax">STRING_TOO_LONG_LEXERERROR</span><span class="plain-syntax">, </span><span class="identifier-syntax">NULL</span><span class="plain-syntax">, </span><span class="identifier-syntax">lexer_word</span><span class="plain-syntax">);</span>
+<span class="plain-syntax">            </span><a href="3-lxr.html#SP32" class="function-link"><span class="function-syntax">Lexer::lexer_problem_handler</span></a><span class="plain-syntax">(</span><span class="constant-syntax">STRING_TOO_LONG_LEXERERROR</span><span class="plain-syntax">, </span><span class="identifier-syntax">NULL</span><span class="plain-syntax">, </span><span class="identifier-syntax">lexer_word</span><span class="plain-syntax">);</span>
 <span class="plain-syntax">        } </span><span class="reserved-syntax">else</span><span class="plain-syntax"> </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">lxs_kind_of_word</span><span class="plain-syntax"> == </span><span class="constant-syntax">I6_INCLUSION_KW</span><span class="plain-syntax">) {</span>
 <span class="plain-syntax">            </span><span class="identifier-syntax">lexer_word</span><span class="plain-syntax">[100] = </span><span class="constant-syntax">0</span><span class="plain-syntax">; </span><span class="comment-syntax">/* to avoid an absurdly long problem message */</span>
-<span class="plain-syntax">            </span><a href="3-lxr.html#SP31" class="function-link"><span class="function-syntax">Lexer::lexer_problem_handler</span></a><span class="plain-syntax">(</span><span class="constant-syntax">I6_TOO_LONG_LEXERERROR</span><span class="plain-syntax">, </span><span class="identifier-syntax">NULL</span><span class="plain-syntax">, </span><span class="identifier-syntax">lexer_word</span><span class="plain-syntax">);</span>
+<span class="plain-syntax">            </span><a href="3-lxr.html#SP32" class="function-link"><span class="function-syntax">Lexer::lexer_problem_handler</span></a><span class="plain-syntax">(</span><span class="constant-syntax">I6_TOO_LONG_LEXERERROR</span><span class="plain-syntax">, </span><span class="identifier-syntax">NULL</span><span class="plain-syntax">, </span><span class="identifier-syntax">lexer_word</span><span class="plain-syntax">);</span>
 <span class="plain-syntax">        } </span><span class="reserved-syntax">else</span><span class="plain-syntax"> {</span>
-<span class="plain-syntax">            </span><a href="3-lxr.html#SP31" class="function-link"><span class="function-syntax">Lexer::lexer_problem_handler</span></a><span class="plain-syntax">(</span><span class="constant-syntax">WORD_TOO_LONG_LEXERERROR</span><span class="plain-syntax">, </span><span class="identifier-syntax">NULL</span><span class="plain-syntax">, </span><span class="identifier-syntax">lexer_word</span><span class="plain-syntax">);</span>
+<span class="plain-syntax">            </span><a href="3-lxr.html#SP32" class="function-link"><span class="function-syntax">Lexer::lexer_problem_handler</span></a><span class="plain-syntax">(</span><span class="constant-syntax">WORD_TOO_LONG_LEXERERROR</span><span class="plain-syntax">, </span><span class="identifier-syntax">NULL</span><span class="plain-syntax">, </span><span class="identifier-syntax">lexer_word</span><span class="plain-syntax">);</span>
 <span class="plain-syntax">        }</span>
 <span class="plain-syntax">    }</span>
 </pre>
-<ul class="endnotetexts"><li>This code is used in <a href="3-lxr.html#SP28_5">&#167;28.5</a>.</li></ul>
+<ul class="endnotetexts"><li>This code is used in <a href="3-lxr.html#SP29_6">&#167;29.6</a>.</li></ul>
 <div class="lsmarkdown">
-<p class="commentary firstcommentary"><a id="SP28_5_2" class="paragraph-anchor"></a><b>&#167;28.5.2. </b>  We recorded the break for the word when it started (recall that, even if
+<p class="commentary firstcommentary"><a id="SP29_6_2" class="paragraph-anchor"></a><b>&#167;29.6.2. </b>  We recorded the break for the word when it started (recall that, even if
 the current word is a literal, its first character was read outside literal
 mode, so it started out in life as an ordinary word and therefore had its
 break recorded). So now we need to set everything else about it, and to
@@ -1039,7 +1128,7 @@ which is why that was the amount we checked to ensure existed when the
 lexer was called. The lowering loop can therefore never overspill the
 workspace.</p>
 </div>
-<p class="commentary"><span class="named-paragraph-container code-font"><span class="named-paragraph-defn">Store everything about the word except its break, which we already know</span><span class="named-paragraph-number">28.5.2</span></span> =</p>
+<p class="commentary"><span class="named-paragraph-container code-font"><span class="named-paragraph-defn">Store everything about the word except its break, which we already know</span><span class="named-paragraph-number">29.6.2</span></span> =</p>
 
 <pre class="displayed-code all-displayed-code code-font">
 <span class="plain-syntax">    </span><span class="identifier-syntax">lw_array</span><span class="plain-syntax">[</span><span class="identifier-syntax">lexer_wordcount</span><span class="plain-syntax">].</span><span class="element-syntax">lw_rawtext</span><span class="plain-syntax"> = </span><span class="identifier-syntax">lexer_word</span><span class="plain-syntax">;</span>
@@ -1059,9 +1148,9 @@ workspace.</p>
 <span class="plain-syntax">    </span><span class="identifier-syntax">lexer_wordcount</span><span class="plain-syntax">++;</span>
 <span class="plain-syntax">    </span><a href="3-lxr.html#SP13" class="function-link"><span class="function-syntax">Lexer::ensure_space_up_to</span></a><span class="plain-syntax">(</span><span class="identifier-syntax">lexer_wordcount</span><span class="plain-syntax">);</span>
 </pre>
-<ul class="endnotetexts"><li>This code is used in <a href="3-lxr.html#SP28_5">&#167;28.5</a>.</li></ul>
+<ul class="endnotetexts"><li>This code is used in <a href="3-lxr.html#SP29_6">&#167;29.6</a>.</li></ul>
 <div class="lsmarkdown">
-<p class="commentary firstcommentary"><a id="SP28_6" class="paragraph-anchor"></a><b>&#167;28.6. Entering and leaving literal mode.</b>  After a character has been stored, in ordinary mode, we see if it
+<p class="commentary firstcommentary"><a id="SP29_7" class="paragraph-anchor"></a><b>&#167;29.7. Entering and leaving literal mode.</b>  After a character has been stored, in ordinary mode, we see if it
 provokes us into entering literal mode, by signifying the start of a
 comment, string or passage of verbatim Inform 6.</p>
 <p>In the case of a string, we positively want to keep the opening character
@@ -1080,7 +1169,7 @@ recording two words</p>
 <p>We do this by adding a hyphen to the previous word (the <code>(</code> word), and by
 throwing away the hyphen from the material of the current word.</p>
 </div>
-<p class="commentary"><span class="named-paragraph-container code-font"><span class="named-paragraph-defn">Contemplate entering literal mode</span><span class="named-paragraph-number">28.6</span></span> =</p>
+<p class="commentary"><span class="named-paragraph-container code-font"><span class="named-paragraph-defn">Contemplate entering literal mode</span><span class="named-paragraph-number">29.7</span></span> =</p>
 
 <pre class="displayed-code all-displayed-code code-font">
 <span class="plain-syntax">    </span><span class="reserved-syntax">switch</span><span class="plain-syntax">(</span><span class="identifier-syntax">c</span><span class="plain-syntax">) {</span>
@@ -1105,9 +1194,9 @@ throwing away the hyphen from the material of the current word.</p>
 <span class="plain-syntax">            </span><span class="reserved-syntax">break</span><span class="plain-syntax">;</span>
 <span class="plain-syntax">    }</span>
 </pre>
-<ul class="endnotetexts"><li>This code is used in <a href="3-lxr.html#SP28">&#167;28</a>.</li></ul>
+<ul class="endnotetexts"><li>This code is used in <a href="3-lxr.html#SP29">&#167;29</a>.</li></ul>
 <div class="lsmarkdown">
-<p class="commentary firstcommentary"><a id="SP28_7" class="paragraph-anchor"></a><b>&#167;28.7. </b>  So literal mode is used for comments, strings and verbatim passages of
+<p class="commentary firstcommentary"><a id="SP29_8" class="paragraph-anchor"></a><b>&#167;29.8. </b>  So literal mode is used for comments, strings and verbatim passages of
 Inform 6 code. We are in this mode when scanning only the middle of
 the literal: after all, we scanned (and recorded) the start of the literal
 in ordinary mode, before noticing that the character(s) marked the onset of
@@ -1124,7 +1213,7 @@ literal we have just made. (Or, if it was a comment, discarding it.)
 <code>lxs_kind_of_word</code> continues to hold the kind of literal we have just
 finished.</p>
 </div>
-<p class="commentary"><span class="named-paragraph-container code-font"><span class="named-paragraph-defn">Contemplate leaving literal mode</span><span class="named-paragraph-number">28.7</span></span> =</p>
+<p class="commentary"><span class="named-paragraph-container code-font"><span class="named-paragraph-defn">Contemplate leaving literal mode</span><span class="named-paragraph-number">29.8</span></span> =</p>
 
 <pre class="displayed-code all-displayed-code code-font">
 <span class="plain-syntax">    </span><span class="reserved-syntax">switch</span><span class="plain-syntax">(</span><span class="identifier-syntax">lxs_kind_of_word</span><span class="plain-syntax">) {</span>
@@ -1136,18 +1225,10 @@ finished.</p>
 <span class="plain-syntax">            }</span>
 <span class="plain-syntax">            </span><span class="reserved-syntax">break</span><span class="plain-syntax">;</span>
 <span class="plain-syntax">        </span><span class="reserved-syntax">case</span><span class="plain-syntax"> </span><span class="identifier-syntax">STRING_KW:</span>
-<span class="plain-syntax">            </span><span class="reserved-syntax">if</span><span class="plain-syntax"> ((</span><span class="identifier-syntax">c</span><span class="plain-syntax"> == </span><span class="constant-syntax">STRING_END</span><span class="plain-syntax">) ||</span>
-<span class="plain-syntax">                ((</span><span class="identifier-syntax">c</span><span class="plain-syntax"> == </span><span class="constant-syntax">INNER_STRING_END</span><span class="plain-syntax">) &amp;&amp; (</span><span class="identifier-syntax">lxs_scanning_text_substitution_depth</span><span class="plain-syntax"> &gt; </span><span class="constant-syntax">0</span><span class="plain-syntax">) &amp;&amp;</span>
-<span class="plain-syntax">                    (</span><span class="identifier-syntax">lxs_scanning_text_substitution_depth</span><span class="plain-syntax"> % </span><span class="constant-syntax">2</span><span class="plain-syntax"> == </span><span class="constant-syntax">0</span><span class="plain-syntax">))) {</span>
+<span class="plain-syntax">            </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">c</span><span class="plain-syntax"> == </span><span class="constant-syntax">STRING_END</span><span class="plain-syntax">) {</span>
 <span class="plain-syntax">                </span><span class="identifier-syntax">lxs_string_soak_up_spaces_mode</span><span class="plain-syntax"> = </span><span class="identifier-syntax">FALSE</span><span class="plain-syntax">;</span>
-<span class="plain-syntax">                </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">c</span><span class="plain-syntax"> == </span><span class="constant-syntax">STRING_END</span><span class="plain-syntax">) {</span>
-<span class="plain-syntax">                    </span><span class="identifier-syntax">lxs_scanning_text_substitution_depth</span><span class="plain-syntax"> = </span><span class="constant-syntax">0</span><span class="plain-syntax">;</span>
-<span class="plain-syntax">                } </span><span class="reserved-syntax">else</span><span class="plain-syntax"> {</span>
-<span class="plain-syntax">                    </span><span class="identifier-syntax">c</span><span class="plain-syntax"> = </span><span class="constant-syntax">STRING_END</span><span class="plain-syntax">;</span>
-<span class="plain-syntax">                    </span><span class="identifier-syntax">lxs_scanning_text_substitution_depth</span><span class="plain-syntax">--;</span>
-<span class="plain-syntax">                }</span>
+<span class="plain-syntax">                </span><a href="3-lxr.html#SP28" class="function-link"><span class="function-syntax">Lexer::go_shallower</span></a><span class="plain-syntax">(</span><span class="string-syntax">"STRING_END reached"</span><span class="plain-syntax">);</span>
 <span class="plain-syntax">                *(</span><span class="identifier-syntax">lexer_hwm</span><span class="plain-syntax">++) = </span><span class="identifier-syntax">c</span><span class="plain-syntax">; </span><span class="comment-syntax">/* record the <code>STRING_END</code> character as part of the word */</span>
-<span class="plain-syntax">                </span><span class="identifier-syntax">lxs_literal_mode</span><span class="plain-syntax"> = </span><span class="identifier-syntax">FALSE</span><span class="plain-syntax">;</span>
 <span class="plain-syntax">            }</span>
 <span class="plain-syntax">            </span><span class="reserved-syntax">break</span><span class="plain-syntax">;</span>
 <span class="plain-syntax">        </span><span class="reserved-syntax">case</span><span class="plain-syntax"> </span><span class="identifier-syntax">I6_INCLUSION_KW:</span>
@@ -1161,9 +1242,9 @@ finished.</p>
 <span class="plain-syntax">    }</span>
 <span class="plain-syntax">    </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">lxs_literal_mode</span><span class="plain-syntax"> == </span><span class="identifier-syntax">FALSE</span><span class="plain-syntax">) </span><span class="identifier-syntax">c</span><span class="plain-syntax"> = </span><span class="character-syntax">' '</span><span class="plain-syntax">; </span><span class="comment-syntax">/* trigger completion of this word */</span>
 </pre>
-<ul class="endnotetexts"><li>This code is used in <a href="3-lxr.html#SP28">&#167;28</a>.</li></ul>
+<ul class="endnotetexts"><li>This code is used in <a href="3-lxr.html#SP29">&#167;29</a>.</li></ul>
 <div class="lsmarkdown">
-<p class="commentary firstcommentary"><a id="SP28_8" class="paragraph-anchor"></a><b>&#167;28.8. Breaking strings up at text substitutions.</b>  When text contains text substitutions, these are ordinarily ignored by the
+<p class="commentary firstcommentary"><a id="SP29_9" class="paragraph-anchor"></a><b>&#167;29.9. Breaking strings up at text substitutions.</b>  When text contains text substitutions, these are ordinarily ignored by the
 lexer, but in <code>lexer_divide_strings_at_text_substitutions</code> mode, we need to
 force strings to end and resume at the two ends of each substitution. For
 instance:</p>
@@ -1179,27 +1260,30 @@ eight ordinary words (four of them commas).</p>
 <p>Note that each open square bracket, and each close square bracket, has been
 removed and become a comma word. We see to open squares before we come
 to recording the character, so to get rid of the <code>[</code> character, we change
-<code>c</code> to a space:</p>
+<code>c</code> to a space.</p>
+<p>(This string division only happens when the outermost text substitution begins,
+which is when the depth is 0, and about to rise to 1.)</p>
 </div>
-<p class="commentary"><span class="named-paragraph-container code-font"><span class="named-paragraph-defn">Force string division at the start of a text substitution, if necessary</span><span class="named-paragraph-number">28.8</span></span> =</p>
+<p class="commentary"><span class="named-paragraph-container code-font"><span class="named-paragraph-defn">Force string division at the start of a text substitution, if necessary</span><span class="named-paragraph-number">29.9</span></span> =</p>
 
 <pre class="displayed-code all-displayed-code code-font">
 <span class="plain-syntax">    </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">lexer_divide_strings_at_text_substitutions</span><span class="plain-syntax">) {</span>
-<span class="plain-syntax">        </span><span class="reserved-syntax">if</span><span class="plain-syntax"> ((</span><span class="identifier-syntax">c</span><span class="plain-syntax"> == </span><span class="constant-syntax">TEXT_SUBSTITUTION_BEGIN</span><span class="plain-syntax">) &amp;&amp; (</span><span class="identifier-syntax">lxs_scanning_text_substitution_depth</span><span class="plain-syntax"> % </span><span class="constant-syntax">2</span><span class="plain-syntax"> == </span><span class="constant-syntax">0</span><span class="plain-syntax">)) {</span>
-<span class="plain-syntax">            </span><span class="type-syntax">int</span><span class="plain-syntax"> </span><span class="identifier-syntax">d</span><span class="plain-syntax"> = </span><span class="identifier-syntax">lxs_scanning_text_substitution_depth</span><span class="plain-syntax">;</span>
-<span class="plain-syntax">            </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">d</span><span class="plain-syntax"> == </span><span class="constant-syntax">0</span><span class="plain-syntax">) {</span>
-<span class="plain-syntax">                </span><a href="3-lxr.html#SP28" class="function-link"><span class="function-syntax">Lexer::feed_char_into_lexer</span></a><span class="plain-syntax">(</span><span class="constant-syntax">STRING_END</span><span class="plain-syntax">); </span><span class="comment-syntax">/* feed <code>&quot;</code> to close the old string */</span>
-<span class="plain-syntax">                </span><a href="3-lxr.html#SP28" class="function-link"><span class="function-syntax">Lexer::feed_char_into_lexer</span></a><span class="plain-syntax">(</span><span class="character-syntax">' '</span><span class="plain-syntax">);</span>
-<span class="plain-syntax">                </span><a href="3-lxr.html#SP28" class="function-link"><span class="function-syntax">Lexer::feed_char_into_lexer</span></a><span class="plain-syntax">(</span><span class="constant-syntax">TEXT_SUBSTITUTION_SEPARATOR</span><span class="plain-syntax">); </span><span class="comment-syntax">/* feed <code>,</code> to start new word */</span>
+<span class="plain-syntax">        </span><span class="reserved-syntax">if</span><span class="plain-syntax"> ((</span><span class="identifier-syntax">c</span><span class="plain-syntax"> == </span><span class="constant-syntax">TEXT_SUBSTITUTION_BEGIN</span><span class="plain-syntax">) &amp;&amp; (</span><span class="identifier-syntax">lxs_scanning_text_depth</span><span class="plain-syntax"> % </span><span class="constant-syntax">2</span><span class="plain-syntax"> == </span><span class="constant-syntax">0</span><span class="plain-syntax">)) {</span>
+<span class="plain-syntax">            </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">lxs_scanning_text_depth</span><span class="plain-syntax"> == </span><span class="constant-syntax">0</span><span class="plain-syntax">) {</span>
+<span class="plain-syntax">                </span><a href="3-lxr.html#SP29" class="function-link"><span class="function-syntax">Lexer::feed_char_into_lexer</span></a><span class="plain-syntax">(</span><span class="constant-syntax">STRING_END</span><span class="plain-syntax">); </span><span class="comment-syntax">/* feed <code>&quot;</code> to close the old string */</span>
+<span class="plain-syntax">                </span><a href="3-lxr.html#SP29" class="function-link"><span class="function-syntax">Lexer::feed_char_into_lexer</span></a><span class="plain-syntax">(</span><span class="character-syntax">' '</span><span class="plain-syntax">);</span>
+<span class="plain-syntax">                </span><a href="3-lxr.html#SP29" class="function-link"><span class="function-syntax">Lexer::feed_char_into_lexer</span></a><span class="plain-syntax">(</span><span class="constant-syntax">TEXT_SUBSTITUTION_SEPARATOR</span><span class="plain-syntax">); </span><span class="comment-syntax">/* feed <code>,</code> to start new word */</span>
 <span class="plain-syntax">                </span><span class="identifier-syntax">c</span><span class="plain-syntax"> = </span><span class="character-syntax">' '</span><span class="plain-syntax">; </span><span class="comment-syntax">/* the lexer now goes on to record a space, which will end the <code>,</code> word */</span>
+<span class="plain-syntax">                </span><a href="3-lxr.html#SP28" class="function-link"><span class="function-syntax">Lexer::go_deeper</span></a><span class="plain-syntax">(</span><span class="string-syntax">"begin substitution at 0"</span><span class="plain-syntax">);</span>
+<span class="plain-syntax">            } </span><span class="reserved-syntax">else</span><span class="plain-syntax"> {</span>
+<span class="plain-syntax">                </span><a href="3-lxr.html#SP28" class="function-link"><span class="function-syntax">Lexer::go_deeper</span></a><span class="plain-syntax">(</span><span class="string-syntax">"begin substitution at even depth &gt; 0"</span><span class="plain-syntax">);</span>
 <span class="plain-syntax">            }</span>
-<span class="plain-syntax">            </span><span class="identifier-syntax">lxs_scanning_text_substitution_depth</span><span class="plain-syntax"> = </span><span class="identifier-syntax">d</span><span class="plain-syntax">+1; </span><span class="comment-syntax">/* but remember that we must get back again */</span>
 <span class="plain-syntax">        }</span>
 <span class="plain-syntax">    }</span>
 </pre>
-<ul class="endnotetexts"><li>This code is used in <a href="3-lxr.html#SP28">&#167;28</a>.</li></ul>
+<ul class="endnotetexts"><li>This code is used in <a href="3-lxr.html#SP29">&#167;29</a>.</li></ul>
 <div class="lsmarkdown">
-<p class="commentary firstcommentary"><a id="SP28_9" class="paragraph-anchor"></a><b>&#167;28.9. </b>  Whereas we see to close squares after recording the character, so we have
+<p class="commentary firstcommentary"><a id="SP29_10" class="paragraph-anchor"></a><b>&#167;29.10. </b>  Whereas we see to close squares after recording the character, so we have
 to erase it to get rid of the <code>]</code>. Note that since this was read in ordinary
 mode, it was automatically spaced (being punctuation), and that therefore
 the feeder above has just sent the second of a sequence of three characters:
@@ -1213,27 +1297,30 @@ that third character in its sequence space, <code>]</code>, space, and that mean
 it will now feed a spurious space into the start of our resumed text?
 Happily, the answer is no: this is why the feeder above checks that it
 is still in ordinary mode before sending that third character. Having
-open quotes again, we have put the lexer into literal mode: and so the
+opened quotes again, we have put the lexer into literal mode: and so the
 spurious space is never fed, and there is no problem.</p>
+<p>(This string division only happens when the outermost text substitution ends,
+which is when the depth is 1, and about to fall to 0.)</p>
 </div>
-<p class="commentary"><span class="named-paragraph-container code-font"><span class="named-paragraph-defn">Force string division at the end of a text substitution, if necessary</span><span class="named-paragraph-number">28.9</span></span> =</p>
+<p class="commentary"><span class="named-paragraph-container code-font"><span class="named-paragraph-defn">Force string division at the end of a text substitution, if necessary</span><span class="named-paragraph-number">29.10</span></span> =</p>
 
 <pre class="displayed-code all-displayed-code code-font">
 <span class="plain-syntax">    </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">lexer_divide_strings_at_text_substitutions</span><span class="plain-syntax">) {</span>
-<span class="plain-syntax">        </span><span class="reserved-syntax">if</span><span class="plain-syntax"> ((</span><span class="identifier-syntax">c</span><span class="plain-syntax"> == </span><span class="constant-syntax">TEXT_SUBSTITUTION_END</span><span class="plain-syntax">) &amp;&amp; (</span><span class="identifier-syntax">lxs_scanning_text_substitution_depth</span><span class="plain-syntax"> % </span><span class="constant-syntax">2</span><span class="plain-syntax"> == </span><span class="constant-syntax">1</span><span class="plain-syntax">)) {</span>
-<span class="plain-syntax">            </span><span class="type-syntax">int</span><span class="plain-syntax"> </span><span class="identifier-syntax">d</span><span class="plain-syntax"> = </span><span class="identifier-syntax">lxs_scanning_text_substitution_depth</span><span class="plain-syntax">;</span>
-<span class="plain-syntax">            </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">d</span><span class="plain-syntax"> == </span><span class="constant-syntax">1</span><span class="plain-syntax">) {</span>
+<span class="plain-syntax">        </span><span class="reserved-syntax">if</span><span class="plain-syntax"> ((</span><span class="identifier-syntax">c</span><span class="plain-syntax"> == </span><span class="constant-syntax">TEXT_SUBSTITUTION_END</span><span class="plain-syntax">) &amp;&amp; (</span><span class="identifier-syntax">lxs_scanning_text_depth</span><span class="plain-syntax"> % </span><span class="constant-syntax">2</span><span class="plain-syntax"> == </span><span class="constant-syntax">1</span><span class="plain-syntax">)) {</span>
+<span class="plain-syntax">            </span><span class="reserved-syntax">if</span><span class="plain-syntax"> (</span><span class="identifier-syntax">lxs_scanning_text_depth</span><span class="plain-syntax"> == </span><span class="constant-syntax">1</span><span class="plain-syntax">) {</span>
+<span class="plain-syntax">                </span><a href="3-lxr.html#SP28" class="function-link"><span class="function-syntax">Lexer::go_shallower</span></a><span class="plain-syntax">(</span><span class="string-syntax">"end substitution at 1"</span><span class="plain-syntax">);</span>
 <span class="plain-syntax">                *(</span><span class="identifier-syntax">lexer_hwm</span><span class="plain-syntax">-1) = </span><span class="constant-syntax">TEXT_SUBSTITUTION_SEPARATOR</span><span class="plain-syntax">; </span><span class="comment-syntax">/* overwrite recorded copy of <code>]</code> with <code>,</code> */</span>
-<span class="plain-syntax">                </span><a href="3-lxr.html#SP28" class="function-link"><span class="function-syntax">Lexer::feed_char_into_lexer</span></a><span class="plain-syntax">(</span><span class="character-syntax">' '</span><span class="plain-syntax">); </span><span class="comment-syntax">/* then feed a space to end the <code>,</code> word */</span>
-<span class="plain-syntax">                </span><a href="3-lxr.html#SP28" class="function-link"><span class="function-syntax">Lexer::feed_char_into_lexer</span></a><span class="plain-syntax">(</span><span class="constant-syntax">STRING_BEGIN</span><span class="plain-syntax">); </span><span class="comment-syntax">/* then feed <code>&quot;</code> to open a new string */</span>
+<span class="plain-syntax">                </span><a href="3-lxr.html#SP29" class="function-link"><span class="function-syntax">Lexer::feed_char_into_lexer</span></a><span class="plain-syntax">(</span><span class="character-syntax">' '</span><span class="plain-syntax">); </span><span class="comment-syntax">/* then feed a space to end the <code>,</code> word */</span>
+<span class="plain-syntax">                </span><a href="3-lxr.html#SP29" class="function-link"><span class="function-syntax">Lexer::feed_char_into_lexer</span></a><span class="plain-syntax">(</span><span class="constant-syntax">STRING_BEGIN</span><span class="plain-syntax">); </span><span class="comment-syntax">/* then feed <code>&quot;</code> to open a new string */</span>
+<span class="plain-syntax">            } </span><span class="reserved-syntax">else</span><span class="plain-syntax"> {</span>
+<span class="plain-syntax">                </span><a href="3-lxr.html#SP28" class="function-link"><span class="function-syntax">Lexer::go_shallower</span></a><span class="plain-syntax">(</span><span class="string-syntax">"end substitution at odd depth &gt; 1"</span><span class="plain-syntax">);</span>
 <span class="plain-syntax">            }</span>
-<span class="plain-syntax">            </span><span class="identifier-syntax">lxs_scanning_text_substitution_depth</span><span class="plain-syntax"> = </span><span class="identifier-syntax">d</span><span class="plain-syntax"> </span><span class="constant-syntax">-</span><span class="plain-syntax"> </span><span class="constant-syntax">1</span><span class="plain-syntax">;</span>
 <span class="plain-syntax">        }</span>
 <span class="plain-syntax">    }</span>
 </pre>
-<ul class="endnotetexts"><li>This code is used in <a href="3-lxr.html#SP28">&#167;28</a>.</li></ul>
+<ul class="endnotetexts"><li>This code is used in <a href="3-lxr.html#SP29">&#167;29</a>.</li></ul>
 <div class="lsmarkdown">
-<p class="commentary firstcommentary"><a id="SP29" class="paragraph-anchor"></a><b>&#167;29. </b>  Finally, note that the breaking-up process may result in empty strings
+<p class="commentary firstcommentary"><a id="SP30" class="paragraph-anchor"></a><b>&#167;30. </b>  Finally, note that the breaking-up process may result in empty strings
 where square brackets abut each other or the ends of the original string.
 Thus</p>
 <blockquote>
@@ -1244,7 +1331,7 @@ This is not a bug: empty strings are legal. It's for higher-level code to
 remove them if they aren't wanted.</p>
 </div>
 <div class="lsmarkdown">
-<p class="commentary firstcommentary"><a id="SP30" class="paragraph-anchor"></a><b>&#167;30. Splicing.</b>  Once in a while, we need to have a run of words in the lexer which
+<p class="commentary firstcommentary"><a id="SP31" class="paragraph-anchor"></a><b>&#167;31. Splicing.</b>  Once in a while, we need to have a run of words in the lexer which
 all do occur in the source text, but not contiguously, so that they
 cannot be represented by a pair <code>(w1, w2)</code>. In that event we use the
 following routine to splice duplicate references at the end of the word
@@ -1254,7 +1341,7 @@ and then <code>(6,8)</code>, we end up with 15 words, and the text of <code>(10,
 contains the same material as words 2, 3, 6, 7, 8.</p>
 </div>
 <pre class="displayed-code all-displayed-code code-font">
-<span class="type-syntax">wording</span><span class="plain-syntax"> </span><span class="function-syntax">Lexer::splice_words</span><button class="popup" onclick="togglePopup('usagePopup26')"><span class="comment-syntax">?</span><span class="popuptext" id="usagePopup26">Usage of <span class="code-font"><span class="function-syntax">Lexer::splice_words</span></span>:<br/>Feeds - <a href="3-fds.html#SP5">&#167;5</a></span></button><span class="plain-syntax">(</span><span class="type-syntax">wording</span><span class="plain-syntax"> </span><span class="identifier-syntax">W</span><span class="plain-syntax">) {</span>
+<span class="type-syntax">wording</span><span class="plain-syntax"> </span><span class="function-syntax">Lexer::splice_words</span><button class="popup" onclick="togglePopup('usagePopup28')"><span class="comment-syntax">?</span><span class="popuptext" id="usagePopup28">Usage of <span class="code-font"><span class="function-syntax">Lexer::splice_words</span></span>:<br/>Feeds - <a href="3-fds.html#SP5">&#167;5</a></span></button><span class="plain-syntax">(</span><span class="type-syntax">wording</span><span class="plain-syntax"> </span><span class="identifier-syntax">W</span><span class="plain-syntax">) {</span>
 <span class="plain-syntax">    </span><span class="type-syntax">int</span><span class="plain-syntax"> </span><span class="identifier-syntax">L</span><span class="plain-syntax"> = </span><a href="3-wrd.html#SP7" class="function-link"><span class="function-syntax">Wordings::length</span></a><span class="plain-syntax">(</span><span class="identifier-syntax">W</span><span class="plain-syntax">);</span>
 <span class="plain-syntax">    </span><a href="3-lxr.html#SP13" class="function-link"><span class="function-syntax">Lexer::ensure_space_up_to</span></a><span class="plain-syntax">(</span><span class="identifier-syntax">lexer_wordcount</span><span class="plain-syntax"> + </span><span class="identifier-syntax">L</span><span class="plain-syntax">);</span>
 <span class="plain-syntax">    </span><span class="reserved-syntax">for</span><span class="plain-syntax"> (</span><span class="type-syntax">int</span><span class="plain-syntax"> </span><span class="identifier-syntax">i</span><span class="plain-syntax">=0; </span><span class="identifier-syntax">i</span><span class="plain-syntax">&lt;</span><span class="identifier-syntax">L</span><span class="plain-syntax">; </span><span class="identifier-syntax">i</span><span class="plain-syntax">++)</span>
@@ -1265,13 +1352,13 @@ contains the same material as words 2, 3, 6, 7, 8.</p>
 <span class="plain-syntax">}</span>
 </pre>
 <div class="lsmarkdown">
-<p class="commentary firstcommentary"><a id="SP31" class="paragraph-anchor"></a><b>&#167;31. Basic command-line error handler.</b>  Some tools using this module will want to push simple error messages out to
+<p class="commentary firstcommentary"><a id="SP32" class="paragraph-anchor"></a><b>&#167;32. Basic command-line error handler.</b>  Some tools using this module will want to push simple error messages out to
 the command line; others will want to translate them into elaborate problem
 texts in HTML. So the client is allowed to define <code>PROBLEM_WORDS_CALLBACK</code>
 to some routine of her own, gazumping this one.</p>
 </div>
 <pre class="displayed-code all-displayed-code code-font">
-<span class="type-syntax">void</span><span class="plain-syntax"> </span><span class="function-syntax">Lexer::lexer_problem_handler</span><button class="popup" onclick="togglePopup('usagePopup27')"><span class="comment-syntax">?</span><span class="popuptext" id="usagePopup27">Usage of <span class="code-font"><span class="function-syntax">Lexer::lexer_problem_handler</span></span>:<br/><a href="3-lxr.html#SP13">&#167;13</a>, <a href="3-lxr.html#SP25_2">&#167;25.2</a>, <a href="3-lxr.html#SP28_5_1">&#167;28.5.1</a></span></button><span class="plain-syntax">(</span><span class="type-syntax">int</span><span class="plain-syntax"> </span><span class="identifier-syntax">err</span><span class="plain-syntax">, </span><span class="identifier-syntax">text_stream</span><span class="plain-syntax"> *</span><span class="identifier-syntax">details</span><span class="plain-syntax">, </span><span class="type-syntax">inchar32_t</span><span class="plain-syntax"> *</span><span class="identifier-syntax">word</span><span class="plain-syntax">) {</span>
+<span class="type-syntax">void</span><span class="plain-syntax"> </span><span class="function-syntax">Lexer::lexer_problem_handler</span><button class="popup" onclick="togglePopup('usagePopup29')"><span class="comment-syntax">?</span><span class="popuptext" id="usagePopup29">Usage of <span class="code-font"><span class="function-syntax">Lexer::lexer_problem_handler</span></span>:<br/><a href="3-lxr.html#SP13">&#167;13</a>, <a href="3-lxr.html#SP25_2">&#167;25.2</a>, <a href="3-lxr.html#SP29_6_1">&#167;29.6.1</a></span></button><span class="plain-syntax">(</span><span class="type-syntax">int</span><span class="plain-syntax"> </span><span class="identifier-syntax">err</span><span class="plain-syntax">, </span><span class="identifier-syntax">text_stream</span><span class="plain-syntax"> *</span><span class="identifier-syntax">details</span><span class="plain-syntax">, </span><span class="type-syntax">inchar32_t</span><span class="plain-syntax"> *</span><span class="identifier-syntax">word</span><span class="plain-syntax">) {</span>
 <span class="plain-syntax">    #</span><span class="identifier-syntax">ifdef</span><span class="plain-syntax"> </span><span class="identifier-syntax">PROBLEM_WORDS_CALLBACK</span>
 <span class="plain-syntax">    </span><span class="identifier-syntax">PROBLEM_WORDS_CALLBACK</span><span class="plain-syntax">(</span><span class="identifier-syntax">err</span><span class="plain-syntax">, </span><span class="identifier-syntax">details</span><span class="plain-syntax">, </span><span class="identifier-syntax">word</span><span class="plain-syntax">);</span>
 <span class="plain-syntax">    #</span><span class="identifier-syntax">endif</span>
@@ -1307,7 +1394,7 @@ to some routine of her own, gazumping this one.</p>
 <span class="plain-syntax">}</span>
 </pre>
 <div class="lsmarkdown">
-<p class="commentary firstcommentary"><a id="SP32" class="paragraph-anchor"></a><b>&#167;32. Logging absolutely everything.</b>  This is not to be done lightly: the output can be enormous.</p>
+<p class="commentary firstcommentary"><a id="SP33" class="paragraph-anchor"></a><b>&#167;33. Logging absolutely everything.</b>  This is not to be done lightly: the output can be enormous.</p>
 </div>
 <pre class="displayed-code all-displayed-code code-font">
 <span class="type-syntax">void</span><span class="plain-syntax"> </span><span class="function-syntax">Lexer::log_lexer_output</span><span class="plain-syntax">(</span><span class="type-syntax">void</span><span class="plain-syntax">) {</span>

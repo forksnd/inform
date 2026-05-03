@@ -1109,10 +1109,11 @@ void ImperativeSubtrees::unroll_says(parse_node *cb_node, wording W, int depth) 
 	}
 
 @<Check that substitution does not contain suspicious punctuation@> =
+LOG("I examine: %w\n", p);
 	int sqb = 0, backticked = FALSE;
 	for (int k=0; p[k]; k++) {
 		switch (p[k]) {
-			case '`': backticked = (backticked)?FALSE:TRUE; break;
+			case '`': if (sqb == 1) backticked = (backticked)?FALSE:TRUE; break;
 			case '[': sqb++;
 				if ((sqb > 1) && (backticked == FALSE))
 					@<Issue problem message for nested substitution@>;

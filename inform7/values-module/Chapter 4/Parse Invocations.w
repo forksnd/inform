@@ -68,7 +68,7 @@ void ParseInvocations::register_phrasal(unsigned int phrase_mc, id_body *idb, wo
 @ Some sanity checks first:
 
 @<Vet phrase text for suitability@> =
-	int bl = 0, fixed_words = 0;
+	int bl = 0, fixed_words = 0, backticked = FALSE;
 	if (phrase_mc == SAY_PHRASE_MC) fixed_words++;
 	LOOP_THROUGH_WORDING(i, W) {
 		if (Lexer::word(i) == OPENBRACKET_V) bl++;
@@ -77,10 +77,16 @@ void ParseInvocations::register_phrasal(unsigned int phrase_mc, id_body *idb, wo
 			fixed_words++;
 			if (Vocabulary::test_flags(i, TEXT_MC+TEXTWITHSUBS_MC))
 				@<Issue problem for quoted text in phrase wording@>;
+			inchar32_t *p = Lexer::word_text(i);
+			for (int j=0; p[j]; j++)
+				if (p[j] == '`')
+					backticked = TRUE;
 		}
 		if ((i<Wordings::last_wn(W)) &&
 			(Lexer::word(i) == CLOSEBRACKET_V) && (Lexer::word(i+1) == OPENBRACKET_V))
 			@<Issue problem for brackets jammed up against each other@>;
+		if (backticked)
+			@<Issue problem for phrase containing backticks@>;
 	}
 	if (fixed_words == 0) @<Issue problem for phrase consisting only of tokens@>;
 
@@ -112,6 +118,15 @@ void ParseInvocations::register_phrasal(unsigned int phrase_mc, id_body *idb, wo
 			"a 'To...' phrase must contain at least one fixed word",
 			"that is, one word other than the bracketed variables. So a declaration "
 			"like 'To (N - number): ...' is not allowed.");
+		last_phrase_with_problem_on_prototype = idb;
+	}
+	return;
+
+@<Issue problem for phrase containing backticks@> =
+	if (idb != last_phrase_with_problem_on_prototype) {
+		StandardProblems::sentence_problem(Task::syntax_tree(), _p_(PM_MustNotBeBackticked),
+			"a 'To...' phrase's wording cannot include a backtick character",
+			"that is, `. (This is to avoid ambiguities in text substitutions.)");
 		last_phrase_with_problem_on_prototype = idb;
 	}
 	return;

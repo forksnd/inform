@@ -402,6 +402,7 @@ it handles crashes correctly.
 	, ... |    ==> @<Issue PM_StartsWithComma problem@>
 	... , |    ==> @<Issue PM_EndsWithComma problem@>
 	... when/while ... |    ==> @<Issue PM_ObjectIncWhen problem@>
+	<backticked-material> |    ==> @<Issue PM_NameIsBackticked problem@>
 	*** <quoted-text> *** |    ==> @<Issue PM_NameWithText problem@>
 	condition |    ==> @<Issue PM_NameReserved problem@>
 	conditions |    ==> @<Issue PM_NameReserved problem@>
@@ -436,6 +437,14 @@ it handles crashes correctly.
 		"you can get this effect with: 'Fillmore West is a room with printed name "
 		"\"Fillmore (West)\".')");
 	Problems::issue_problem_end();
+
+@<Issue PM_NameIsBackticked problem@> =
+	StandardProblems::sentence_problem(Task::syntax_tree(), _p_(PM_NameIsBackticked),
+		"this seems to give something a name which includes a backtick character `",
+		"which is not allowed since the backtick has a special meaning in text "
+		"substitutions, so this would be ambiguous. (If you need, say, a room which "
+		"the player sees as '`Tick`', you can get this effect with: 'Tick-Room is "
+		"a room with printed name \"`Tick`\".')");
 
 @<Issue PM_Crash1 problem@> =
 	WRITE_TO(STDERR, "*** Exit(1) requested for testing purposes ***\n");
@@ -519,6 +528,18 @@ it handles crashes correctly.
 		"'variable', 'condition', 'phrase' and 'action', for example. But "
 		"whatever you were making here, you'll need to call it something "
 		"else.");
+
+@ Any backticks at all, anywhere in the wording, are prohibited:
+
+=
+<backticked-material> internal {
+	LOOP_THROUGH_WORDING(wn, W) {
+		inchar32_t *p = Lexer::word_raw_text(wn);
+		for (int j=0; p[j]; j++)
+			if (p[j] == '`') return TRUE;
+	}
+	return FALSE;
+}
 
 @ At this point we do something that might look odd: we check to see if the
 text of the `CREATED_NT` node is the name of an object already. That seems

@@ -12,7 +12,11 @@ To begin:
 	say "Then, [praise for `golf not [x]`].";
 	say "Then, [praise for `golf not [praise for `hammer-throwing`]`].";
 	showme placard;
-	showme notice.
+	showme notice;
+	say "Have some Xs: [intone `[intone `[intone `[intone `[intone `[intone `[intone `X`]`]`]`]`]`]`].";
+	say "In this echoey space, you can endlessly hear the [intone whispering sound] of priests. The clock murmurs [intone `[unicode U+0060]tick[unicode U+0060]`]. I spy `backticks`, [intone `sirrah`]."
+
+The whispering sound is always "whisper".
 
 The notice is a text that varies. The notice is "[praise for `curling`] and [praise for `[placard]`]".
 
@@ -23,3 +27,6 @@ To say disclaimer:
 
 To say praise for (T - text):
 	say "all praise [T]".
+
+To say intone (T - text):
+	say "[T], [T], [T]".
